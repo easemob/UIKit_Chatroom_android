@@ -8,7 +8,7 @@ In this project, there is a best practice demonstration project in the `Example`
 
 To experience functions of the ChatroomUIKit, you can scan the following QR code to try a demo.
 
-[![SampleDemo](https://github.com/easemob/UIKit_Chatroom_android/blob/main/image/demo.png)](https://github.com/easemob/UIKit_Chatroom_android/blob/main/image/demo.png).
+[![SampleDemo](https://github.com/easemob/UIKit_Chatroom_android/blob/dev/image/demo.png)](https://github.com/easemob/UIKit_Chatroom_android/blob/dev/image/demo.png).
 
 # [ChatroomUIKit Guide](https://github.com/easemob/UIKit_Chatroom_android#chatroomuikit-guide)
 
@@ -159,7 +159,7 @@ class ChatroomActivity : ComponentActivity(){
 }
 ```
 
-[![CreateChatroom](https://github.com/easemob/UIKit_Chatroom_android/blob/main/image/CreateChatroom.png)](https://github.com/easemob/UIKit_Chatroom_android/blob/main/image/CreateChatroom.png).
+[![CreateChatroom](https://github.com/easemob/UIKit_Chatroom_android/blob/dev/image/CreateChatroom.png)](https://github.com/easemob/UIKit_Chatroom_android/blob/dev/image/CreateChatroom.png).
 
 # [Advanced Usage](https://github.com/easemob/UIKit_Chatroom_android#advanced-usage)
 
@@ -252,13 +252,13 @@ fun ChatroomUIKitTheme(
 
 The following figure presents the entire logic of business requests and callbacks.
 
-![Overall flow diagram of business logic](https://github.com/easemob/UIKit_Chatroom_android/blob/main/image/BusinessFlowchart.png)
+![Overall flow diagram of business logic](https://github.com/easemob/UIKit_Chatroom_android/blob/dev/image/BusinessFlowchart.png)
 
 # [API Sequence Diagram](https://github.com/easemob/UIKit_Chatroom_android#api-sequence-diagram)
 
 The following figure is the best-practice API calling sequence diagram in the `Example` project.
 
-![APIUML](https://github.com/easemob/UIKit_Chatroom_android/blob/main/image/Api.png)
+![APIUML](https://github.com/easemob/UIKit_Chatroom_android/blob/dev/image/Api.png)
 
 # [Design Guidelines](https://github.com/easemob/UIKit_Chatroom_android#design-guidelines)
 
