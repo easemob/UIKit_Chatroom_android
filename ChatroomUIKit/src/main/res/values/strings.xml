@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
+
+    <string name="stream_compose_message_label">Aa</string>
+
+    <string name="stream_compose_cd_send_button" translatable="false">Send button</string>
+    <string name="stream_compose_cd_voice_button" translatable="false">Voice button</string>
+    <string name="stream_compose_cd_emoji_button" translatable="false">Emoji button</string>
+
+    <!-- Message Composer -->
+    <string name="stream_compose_message_composer_error_message_length">The message length exceeds the limit.</string>
+    <string name="stream_compose_message_list_empty_messages">No news yet</string>
+
+    <!-- Compose default text -->
+    <string name="compose_bottom_drawer_cancel">Cancel</string>
+    <string name="compose_empty_text"></string>
+    
+    <string name="compose_description_input_field">UI custom input field</string>
+    <string name="compose_description_bottom_sheet_drag_handle">Default drag handle</string>
+
+    <string name="role_owner">Host</string>
+    <string name="role_admin">Admin</string>
+    <string name="member_management_participant">Participants</string>
+    <string name="member_management_mute">Muted</string>
+    <string name="search">Search</string>
+    <string name="loading_more">Loading more date…</string>
+
+    <string name="menu_item_mute">Mute</string>
+    <string name="menu_item_unmute">Unmute</string>
+    <string name="menu_item_remove">Remove</string>
+    <string name="menu_item_translate">Translate</string>
+    <string name="menu_item_report">Report</string>
+    <string name="menu_item_recall">Recall</string>
+
+    <string name="dialog_title_remove_user">Want to remove [%1$s] from the chatroom?</string>
+
+    <!-- bottomToolbar  -->
+    <string name="compose_bottom_toolbar_tag">Let\'s Chat!</string>
+
+    <!-- Gift  -->
+    <string name="compose_gift_item_subtitle">Send %1$s </string>
+
+    <!-- Message  -->
+    <string name="compose_message_item_joined">Joined</string>
+    <string name="compose_message_gift_sent">Send </string>
+
+    <!-- report  -->
+    <string name="report_button_click_menu_title">Report</string>
+    <string name="report_button_click_menu_subtitle_violation">Violation</string>
+    <string name="report_button_click_menu_button_cancel">Cancel</string>
+    <string name="report_button_click_menu_button_report">Report</string>
+
+    <string name="violation_reason_1">Unwelcome commercial content or spam</string>
+    <string name="violation_reason_2">Pornographic or explict content</string>
+    <string name="violation_reason_3">Child abuse</string>
+    <string name="violation_reason_4">Hate speech or graphic violence</string>
+    <string name="violation_reason_5">Promote terrorism</string>
+    <string name="violation_reason_6">Harassment or bullying</string>
+    <string name="violation_reason_7">Sucide or self harm</string>
+    <string name="violation_reason_8">False information</string>
+    <string name="violation_reason_9">Others</string>
+
+</resources>

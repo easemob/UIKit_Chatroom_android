@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="report_tag">
+        <item>tag1</item>
+        <item>tag2</item>
+        <item>tag3</item>
+        <item>tag4</item>
+        <item>tag5</item>
+        <item>tag6</item>
+        <item>tag7</item>
+        <item>tag8</item>
+        <item>tag9</item>
+    </string-array>
+
+    <string-array name="report_reason">
+        <item>@string/violation_reason_1</item>
+        <item>@string/violation_reason_2</item>
+        <item>@string/violation_reason_3</item>
+        <item>@string/violation_reason_4</item>
+        <item>@string/violation_reason_5</item>
+        <item>@string/violation_reason_6</item>
+        <item>@string/violation_reason_7</item>
+        <item>@string/violation_reason_8</item>
+        <item>@string/violation_reason_9</item>
+    </string-array>
+</resources>

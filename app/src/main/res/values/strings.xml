@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Easemob Chatroom</string>
+
+    <string name="re_login">Try again</string>
+    <string name="chatroom_create">Create</string>
+    <string name="chatroom_list">Chatroom</string>
+    <string name="chatroom_enter">Enter</string>
+    <string name="login_result_failed">Login failed</string>
+    <string name="default_room_name">%1$s\'s Chatroom</string>
+    <string name="powered_by">Powered by Easemob</string>
+    <string name="dialog_title_end_live">End live streaming?</string>
+    <string name="chatroom_report_success">Report submitted.</string>
+    <string name="chatroom_kick">You have been removed from the chatroom.</string>
+    <string name="chatroom_mute">You have been muted and are unable to send messages.</string>
+    <string name="chatroom_action_mute_success">Mute success</string>
+    <string name="chatroom_action_mute_fail">Mute failed:%1$s</string>
+    <string name="chatroom_action_unmute_success">Unmute success</string>
+    <string name="chatroom_action_unmute_fail">Unmute failed:%1$s</string>
+    <string name="chatroom_action_ended">The chatroom has ended</string>
+    <string name="chatroom_action_kick_user_success">[%1$s] has been removed from the chatroom.</string>
+</resources>

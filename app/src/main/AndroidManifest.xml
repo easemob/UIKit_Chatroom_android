@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <application
+        android:icon="@mipmap/icon_chatroom_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.ChatroomUIKit"
+        android:name=".ChatroomApplication">
+        <activity
+            android:name="com.hyphenate.chatroom.MainActivity"
+            android:exported="true"
+            android:label="@string/app_name">
+        </activity>
+        <activity android:name="com.hyphenate.chatroom.ChatroomListActivity"/>
+        <activity
+            android:name="com.hyphenate.chatroom.ChatroomActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"
+            />
+        <activity android:name="com.hyphenate.chatroom.SplashActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
