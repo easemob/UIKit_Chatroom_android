@@ -532,7 +532,6 @@ class ChatroomUIKitClient {
                                                 parseJoinedMsg(it)?.let { userInfo->
                                                     chatroomUser.setUserInfo(it.from,userInfo.toUser())
                                                 }
-                                                Log.e("apex","CHATROOMUIKITUSERJOIN ${it.from}")
                                                 listener.onUserJoined(it.conversationId(),it.from)
                                             }
                                         } catch (e: Exception) {

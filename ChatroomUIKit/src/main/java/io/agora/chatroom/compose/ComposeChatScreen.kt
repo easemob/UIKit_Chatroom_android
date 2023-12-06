@@ -361,14 +361,27 @@ fun ShowComposeMenuDrawer(
                             }
                             menuViewModel.closeDrawer()
                         }
-                        R.id.action_menu_remove -> {
+                        R.id.action_menu_mute -> {
                             (menuViewModel.getSelectedBean() as ChatMessage).let {
                                     message ->
-                                if (ChatroomUIKitClient.getInstance().isCurrentRoomOwner()){
+                                if (ChatroomUIKitClient.getInstance().isCurrentRoomOwner() &&
+                                    message.from != ChatroomUIKitClient.getInstance().getCurrentUser().userId
+                                ){
                                     memberListViewModel.muteUser(message.from)
                                 }
                             }
-
+                            menuViewModel.closeDrawer()
+                        }
+                        R.id.action_menu_unmute -> {
+                            (menuViewModel.getSelectedBean() as ChatMessage).let {
+                                    message ->
+                                if (ChatroomUIKitClient.getInstance().isCurrentRoomOwner() &&
+                                    message.from != ChatroomUIKitClient.getInstance().getCurrentUser().userId
+                                ){
+                                    memberListViewModel.unmuteUser(message.from)
+                                }
+                            }
+                            menuViewModel.closeDrawer()
                         }
                         R.id.action_menu_report -> {
                             reportViewModel.openDrawer()

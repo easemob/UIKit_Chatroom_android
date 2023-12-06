@@ -344,11 +344,40 @@ class ChatroomActivity : ComponentActivity(), ChatroomResultListener, ChatroomCh
                     Toast.makeText(this,resources.getString(R.string.chatroom_report_fail,"$errorCode $errorMessage"), Toast.LENGTH_SHORT).show()
                 }
             }
+        }else if (event == ChatroomResultEvent.SEND_MESSAGE){
+            if (errorCode == ChatError.USER_MUTED ){
+                runOnUiThread {
+                    Toast.makeText(this,resources.getString(R.string.chatroom_mute), Toast.LENGTH_SHORT).show()
+                }
+            }
+        }else if (event == ChatroomResultEvent.MUTE_MEMBER){
+            if (errorCode == ChatError.EM_NO_ERROR){
+                runOnUiThread {
+                    Toast.makeText(this,resources.getString(R.string.chatroom_action_mute_success), Toast.LENGTH_SHORT).show()
+                }
+            }else{
+                runOnUiThread {
+                    Toast.makeText(this,resources.getString(R.string.chatroom_action_mute_fail,"$errorCode $errorMessage"), Toast.LENGTH_SHORT).show()
+                }
+            }
+        }else if (event == ChatroomResultEvent.UNMUTE_MEMBER){
+            if (errorCode == ChatError.EM_NO_ERROR){
+                runOnUiThread {
+                    Toast.makeText(this,resources.getString(R.string.chatroom_action_unmute_success), Toast.LENGTH_SHORT).show()
+                }
+            }else{
+                runOnUiThread {
+                    Toast.makeText(this,resources.getString(R.string.chatroom_action_unmute_fail,"$errorCode $errorMessage"), Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 
     override fun onUserBeKicked(roomId: String, userId: String) {
-        if (roomId == room.id && userId == ChatroomUIKitClient.getInstance().getCurrentUser().userId){
+        if (roomId == room.id){
+            runOnUiThread {
+                Toast.makeText(this,resources.getString(R.string.chatroom_report_success), Toast.LENGTH_SHORT).show()
+            }
             finish()
         }
     }
@@ -375,6 +404,7 @@ class ChatroomActivity : ComponentActivity(), ChatroomResultListener, ChatroomCh
             )
         }else{
             roomViewModel.leaveChatroom()
+            finish()
         }
     }
 }
