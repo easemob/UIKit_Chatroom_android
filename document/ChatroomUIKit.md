@@ -159,7 +159,7 @@ class ChatroomActivity : ComponentActivity(){
 }
 ```
 
-[![CreateChatroom](../image/CreateChatroom.png)](../image/CreateChatroomA.png).
+[![CreateChatroom](../image/CreateChatroomA.png)](../image/CreateChatroomA.png).
 
 # [Advanced Usage](../document/ChatroomUIKit.md#advanced-usage)
 
