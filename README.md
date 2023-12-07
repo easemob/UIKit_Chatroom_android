@@ -28,7 +28,7 @@
 ```shell
  git clone [本项目地址]
 ```
-### 2. 将 [ChatroomUIKit](../ChatroomUIKit) 和 [ChatroomService](../ChatroomService) 模块导入到项目中
+### 2. 将 [ChatroomUIKit](./ChatroomUIKit) 和 [ChatroomService](./ChatroomService) 模块导入到项目中
 ```kotlin
 // settings.gradle
 include ':ChatroomUIKit'

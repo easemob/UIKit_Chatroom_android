@@ -2,35 +2,35 @@
 
 *English | [英文](ChatroomUIKit.md)*
 
-# [Demo](https://github.com/easemob/UIKit_Chatroom_android#demo)
+# [Demo](../app)
 
 在该项目中，我们在 `Example` 文件夹中提供了最佳实践示范项目，帮助你构建业务能力。
 
 你可以扫描以下二维码体验 demo：
 
-[![SampleDemo](https://github.com/easemob/UIKit_Chatroom_android/blob/dev/image/demo.png)](https://github.com/easemob/UIKit_Chatroom_android/blob/dev/image/demo.png).
+[![SampleDemo](../image/demo.png)](../image/demo.png).
 
-# [ChatroomUIKit 集成指南](https://github.com/easemob/UIKit_Chatroom_android#chatroomuikit-集成指南)
+# [ChatroomUIKit 集成指南](../document/ChatroomUIKit_zh.md#chatroomuikit-集成指南)
 
-## [概述](https://github.com/easemob/UIKit_Chatroom_android#概述)
+## [概述](../document/ChatroomUIKit_zh.md#概述)
 
 本指南介绍了 ChatroomUIKit 框架在 Android 开发中的概述和使用示例，描述了该 UIKit 的各个组件和功能，使开发人员能够很好地了解 UIKit 并有效地使用。
 
-## [目录](https://github.com/easemob/UIKit_Chatroom_android#目录)
+## [目录](../document/ChatroomUIKit_zh.md#目录)
 
-- [前提条件](https://github.com/easemob/UIKit_Chatroom_android#前提条件)
-- [安装](https://github.com/easemob/UIKit_Chatroom_android#安装)
-- [架构](https://github.com/easemob/UIKit_Chatroom_android#架构)
-- [快速开始](https://github.com/easemob/UIKit_Chatroom_android#快速开始)
-- [进阶用法](https://github.com/easemob/UIKit_Chatroom_android#进阶用法)
-- [自定义](https://github.com/easemob/UIKit_Chatroom_android#自定义)
-- [业务流程](https://github.com/easemob/UIKit_Chatroom_android#业务流程)
-- [API 时序图](https://github.com/easemob/UIKit_Chatroom_android#api-时序图)
-- [设计指南](https://github.com/easemob/UIKit_Chatroom_android#设计指南)
-- [贡献](https://github.com/easemob/UIKit_Chatroom_android#贡献)
-- [许可证](https://github.com/easemob/UIKit_Chatroom_android#许可证)
+- [前提条件](../document/ChatroomUIKit_zh.md#前提条件)
+- [安装](../document/ChatroomUIKit_zh.md#安装)
+- [架构](../document/ChatroomUIKit_zh.md#架构)
+- [快速开始](../document/ChatroomUIKit_zh.md#快速开始)
+- [进阶用法](../document/ChatroomUIKit_zh.md#进阶用法)
+- [自定义](../document/ChatroomUIKit_zh.md#自定义)
+- [业务流程](../document/ChatroomUIKit_zh.md#业务流程)
+- [API 时序图](../document/ChatroomUIKit_zh.md#api-时序图)
+- [设计指南](../document/ChatroomUIKit_zh.md#设计指南)
+- [贡献](../document/ChatroomUIKit_zh.md#贡献)
+- [许可证](../document/ChatroomUIKit_zh.md#许可证)
 
-# [前提条件](https://github.com/easemob/UIKit_Chatroom_android#前提条件)
+# [前提条件](../document/ChatroomUIKit_zh.md#前提条件)
 
 - Jetpack Compose 需使用 Android API 级别 21（Android 5.0）及以上
 - Android Studio Arctic Fox 2020.3.1 及以上
@@ -38,11 +38,11 @@
 - JDK 1.8 及以上
 - Gradle 7.0.0 及以上
 
-# [安装](https://github.com/easemob/UIKit_Chatroom_android#安装)
+# [安装](../document/ChatroomUIKit_zh.md#安装)
 
 你可以通过 build.gradle 导入 ChatroomUIKi 库，作为 app 项目的依赖。
 
-## [本地模块依赖](https://github.com/easemob/UIKit_Chatroom_android#本地模块依赖)
+## [本地模块依赖](../document/ChatroomUIKit_zh.md#本地模块依赖)
 
 找到 **ChatroomUIKit** 模块，将 [ChatroomUIKit](../ChatroomUIKit) 和 [ChatroomService](../ChatroomService) 模块导入到项目中。
 
@@ -65,7 +65,7 @@ dependencies {
 }
 ```
 
-## [远程模块依赖](https://github.com/easemob/UIKit_Chatroom_android#远程模块依赖)
+## [远程模块依赖](../document/ChatroomUIKit_zh.md#远程模块依赖)
 
 将以下代码添加到 build.gradle 中：
 
@@ -73,9 +73,9 @@ dependencies {
 implementation 'ChatroomUIKit'
 ```
 
-# [架构](https://github.com/easemob/UIKit_Chatroom_android#架构)
+# [架构](../document/ChatroomUIKit_zh.md#架构)
 
-### [ChatroomUIKit 基本组件](https://github.com/easemob/UIKit_Chatroom_android#chatroomuikit-基本组件)
+### [ChatroomUIKit 基本组件](../document/ChatroomUIKit_zh.md#chatroomuikit-基本组件)
 
 ```
 ┌─ Example                               // Demo 目录。
@@ -99,7 +99,7 @@ implementation 'ChatroomUIKit'
        ├─ widget                         // 输入组件。
        └─ ui                             // 搜索 Activity。
 ```
-# [快速开始](https://github.com/easemob/UIKit_Chatroom_android#快速开始)
+# [快速开始](../document/ChatroomUIKit_zh.md#快速开始)
 
 本节介绍 ChatroomUIKit 各种组件的使用示例。`Examples` 文件夹中介绍了详细的代码和各种用例的项目。
 
@@ -108,7 +108,7 @@ implementation 'ChatroomUIKit'
 2. 找到根目录下的 `local.properties` 文件夹，配置 `CHATROOM_APP_KEY` 和 `REQUEST_HOST`。
 3. 运行 Demo。
 
-### [步骤 1 初始化 ChatroomUIKit](https://github.com/easemob/UIKit_Chatroom_android#步骤-1-初始化-chatroomuikit)
+### [步骤 1 初始化 ChatroomUIKit](../document/ChatroomUIKit_zh.md#步骤-1-初始化-chatroomuikit)
 
 ```kotlin
 class ChatroomApplication : Application() {
@@ -130,7 +130,7 @@ class ChatroomApplication : Application() {
 }
 ```
 
-### [步骤 2 登录 ChatroomUIKit](https://github.com/easemob/UIKit_Chatroom_android#步骤-2-登录-chatroomuikit)
+### [步骤 2 登录 ChatroomUIKit](../document/ChatroomUIKit_zh.md#步骤-2-登录-chatroomuikit)
 
 ```kotlin
 // 利用符合 `UserInfoProtocol` 协议的当前用户对象中的用户信息，登录 ChatroomUIKit。
@@ -139,7 +139,7 @@ class ChatroomApplication : Application() {
 ChatroomUIKitClient.getInstance().login("user id","token")
 ```
 
-### [步骤 3 创建聊天室](https://github.com/easemob/UIKit_Chatroom_android#步骤-3-创建聊天室)
+### [步骤 3 创建聊天室](../document/ChatroomUIKit_zh.md#步骤-3-创建聊天室)
 
 ```kotlin
 // 1. 获取聊天室列表，加入聊天室。或者，在环信控制台创建聊天室。详见 https://docs-im-beta.easemob.com/document/server-side/enable_and_configure_IM.html#创建聊天室。
@@ -157,13 +157,13 @@ class ChatroomActivity : ComponentActivity(){
 }
 ```
 
-[![CreateChatroom](https://github.com/easemob/UIKit_Chatroom_android/blob/dev/image/CreateChatroom.png)](https://github.com/easemob/UIKit_Chatroom_android/blob/dev/image/CreateChatroom.png).
+[![CreateChatroom](../image/CreateChatroom.png)](../image/CreateChatroom.png).
 
-# [进阶用法](https://github.com/easemob/UIKit_Chatroom_android#进阶用法)
+# [进阶用法](../document/ChatroomUIKit_zh.md#进阶用法)
 
 本节介绍三个进阶用法。
 
-### [1.初始化聊天室 compose](https://github.com/easemob/UIKit_Chatroom_android#1初始化聊天室-compose)
+### [1.初始化聊天室 compose](../document/ChatroomUIKit_zh.md#1初始化聊天室-compose)
 
 ```kotlin
     val chatroomUIKitOptions = ChatroomUIKitOptions(
@@ -177,7 +177,7 @@ class ChatroomActivity : ComponentActivity(){
 ChatroomUIKitClient.getInstance().setUp(applicationContext = applicationContext,appKey = "Your AppKey",options = chatroomUIKitOptions)
 ```
 
-### [2.登录 ChatroomUIKit](https://github.com/easemob/UIKit_Chatroom_android##2登录-chatroomuikit)
+### [2.登录 ChatroomUIKit](../document/ChatroomUIKit_zh.md#2登录-chatroomuikit)
 
 ```kotlin
 class YourAppUser: UserInfoProtocol {
@@ -197,7 +197,7 @@ class YourAppUser: UserInfoProtocol {
 ChatroomUIKitClient.getInstance().login(YourAppUser, token, onSuccess = {}, onError = {code,error ->})
 ```
 
-### [3.监听 ChatroomUIKit 事件和错误](https://github.com/easemob/UIKit_Chatroom_android#3监听-chatroomuikit-事件和错误)
+### [3.监听 ChatroomUIKit 事件和错误](../document/ChatroomUIKit_zh.md#3监听-chatroomuikit-事件和错误)
 
 你可以调用 `registerRoomResultListener` 方法监听 ChatroomUIKit 事件和错误。
 
@@ -205,9 +205,9 @@ ChatroomUIKitClient.getInstance().login(YourAppUser, token, onSuccess = {}, onEr
 ChatroomUIKitClient.getInstance().registerRoomResultListener(this)
 ```
 
-# [自定义](https://github.com/easemob/UIKit_Chatroom_android#自定义)
+# [自定义](../document/ChatroomUIKit_zh.md#自定义)
 
-### [修改可配置项](https://github.com/easemob/UIKit_Chatroom_android#修改可配置项)
+### [修改可配置项](../document/ChatroomUIKit_zh.md#修改可配置项)
 
 ```kotlin
 // 修改 UiOptions 中的可配项。例如，你可以修改 UiOptions 中的 useGiftsInList 配置消息列表上是否显示礼物。
@@ -230,7 +230,7 @@ class MessageListViewModel(
 )
 ```
 
-### [自定义主题](https://github.com/easemob/UIKit_Chatroom_android#自定义主题)
+### [自定义主题](../document/ChatroomUIKit_zh.md#自定义主题)
 
 你可以通过更新主题相关的配置项来自定义主题。若对任何配置项不做修改，可以使用默认主题。
 
@@ -246,19 +246,19 @@ fun ChatroomUIKitTheme(
 )
 ```
 
-# [业务流程](https://github.com/easemob/UIKit_Chatroom_android#业务流程)
+# [业务流程](../document/ChatroomUIKit_zh.md#业务流程)
 
 下图为整个业务请求和回调逻辑。
 
-![Overall flow diagram of business logic](https://github.com/easemob/UIKit_Chatroom_android/blob/dev/image/BusinessFlowchart.png)
+![Overall flow diagram of business logic](../image/BusinessFlowchart.png)
 
-# [API 时序图](https://github.com/easemob/UIKit_Chatroom_android#api-时序图)
+# [API 时序图](../document/ChatroomUIKit_zh.md#api-时序图)
 
 下图为 `Example` 项目中的最佳实践 API 调用时序图。
 
-![APIUML](https://github.com/easemob/UIKit_Chatroom_android/blob/dev/image/Api.png)
+![APIUML](../image/Api.png)
 
-# [设计指南](https://github.com/easemob/UIKit_Chatroom_android#设计指南)
+# [设计指南](../document/ChatroomUIKit_zh.md#设计指南)
 
 关于设计指南和细节中的任何问题，可以在 Figma 设计稿中添加标注，然后 @ 我们的设计师 Stevie Jiang。
 
@@ -270,10 +270,10 @@ fun ChatroomUIKitTheme(
 
 我们随时欢迎各种形式的贡献和建议。如有任何问题或改进意见，你可以创建问题或提交 PR。
 
-## [作者](https://github.com/easemob/UIKit_Chatroom_android#作者)
+## [作者](../document/ChatroomUIKit_zh.md#作者)
 
 apex-wang, [1746807718@qq.com](mailto:1746807718@qq.com)
 
-## [License](https://github.com/easemob/UIKit_Chatroom_android#license)
+## [许可证](../document/ChatroomUIKit_zh.md#许可证)
 
 ChatroomUIKit 采用 MIT 许可证。如欲了解更多信息，请参阅许可证文件。
