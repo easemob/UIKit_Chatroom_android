@@ -44,7 +44,7 @@ You can use build.gradle to import the ChatroomUIKit library as a dependency for
 
 ## [Local module dependencies](../document/ChatroomUIKit.md#Local-module-dependencies)
 
-Locate the downloaded **ChatroomUIKit** module to import [ChatroomUIKit](./ChatroomUIKit) and [ChatroomService](./ChatroomService) modules to the project.
+Locate the downloaded **ChatroomUIKit** module to import [ChatroomUIKit](../ChatroomUIKit) and [ChatroomService](../ChatroomService) modules to the project.
 
 1. Open your project in Android Studio.
 

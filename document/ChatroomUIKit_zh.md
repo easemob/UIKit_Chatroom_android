@@ -44,7 +44,7 @@
 
 ## [本地模块依赖](../document/ChatroomUIKit_zh.md#本地模块依赖)
 
-找到 **ChatroomUIKit** 模块，将 [ChatroomUIKit](./ChatroomUIKit) 和 [ChatroomService](./ChatroomService) 模块导入到项目中。
+找到 **ChatroomUIKit** 模块，将 [ChatroomUIKit](../ChatroomUIKit) 和 [ChatroomService](../ChatroomService) 模块导入到项目中。
 
 1. 在 Android Studio 中打开你的项目。
 
