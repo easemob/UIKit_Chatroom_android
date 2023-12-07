@@ -8,7 +8,7 @@
 
 你可以扫描以下二维码体验 demo：
 
-[![SampleDemo](https://github.com/easemob/UIKit_Chatroom_android/blob/main/image/demo.png)](https://github.com/easemob/UIKit_Chatroom_android/blob/main/image/demo.png).
+[![SampleDemo](https://github.com/easemob/UIKit_Chatroom_android/blob/dev/image/demo.png)](https://github.com/easemob/UIKit_Chatroom_android/blob/dev/image/demo.png).
 
 # [ChatroomUIKit 集成指南](https://github.com/easemob/UIKit_Chatroom_android#chatroomuikit-集成指南)
 
@@ -157,7 +157,7 @@ class ChatroomActivity : ComponentActivity(){
 }
 ```
 
-[![CreateChatroom](https://github.com/easemob/UIKit_Chatroom_android/blob/main/image/CreateChatroom.png)](https://github.com/easemob/UIKit_Chatroom_android/blob/main/image/CreateChatroom.png).
+[![CreateChatroom](https://github.com/easemob/UIKit_Chatroom_android/blob/dev/image/CreateChatroom.png)](https://github.com/easemob/UIKit_Chatroom_android/blob/dev/image/CreateChatroom.png).
 
 # [进阶用法](https://github.com/easemob/UIKit_Chatroom_android#进阶用法)
 
@@ -250,13 +250,13 @@ fun ChatroomUIKitTheme(
 
 下图为整个业务请求和回调逻辑。
 
-![Overall flow diagram of business logic](https://github.com/easemob/UIKit_Chatroom_android/blob/main/image/BusinessFlowchart.png)
+![Overall flow diagram of business logic](https://github.com/easemob/UIKit_Chatroom_android/blob/dev/image/BusinessFlowchart.png)
 
 # [API 时序图](https://github.com/easemob/UIKit_Chatroom_android#api-时序图)
 
 下图为 `Example` 项目中的最佳实践 API 调用时序图。
 
-![APIUML](https://github.com/easemob/UIKit_Chatroom_android/blob/main/image/Api.png)
+![APIUML](https://github.com/easemob/UIKit_Chatroom_android/blob/dev/image/Api.png)
 
 # [设计指南](https://github.com/easemob/UIKit_Chatroom_android#设计指南)
 
