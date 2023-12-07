@@ -159,7 +159,7 @@ class ChatroomActivity : ComponentActivity(){
 }
 ```
 
-[![CreateChatroom](../image/CreateChatroom.png)](../image/CreateChatroom.png).
+[![CreateChatroom](../image/CreateChatroomA.png)](../image/CreateChatroomA.png).
 
 # [Advanced Usage](../document/ChatroomUIKit.md#advanced-usage)
 
@@ -252,7 +252,7 @@ fun ChatroomUIKitTheme(
 
 The following figure presents the entire logic of business requests and callbacks.
 
-![Overall flow diagram of business logic](../image/BusinessFlowchart.png)
+![Overall flow diagram of business logic](../image/BusinessFlowchartA.png)
 
 # [API Sequence Diagram](../document/ChatroomUIKit.md#api-sequence-diagram)
 

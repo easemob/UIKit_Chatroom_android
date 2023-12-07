@@ -250,7 +250,7 @@ fun ChatroomUIKitTheme(
 
 下图为整个业务请求和回调逻辑。
 
-![Overall flow diagram of business logic](../image/BusinessFlowchart.png)
+![Overall flow diagram of business logic](../image/BusinessFlowchartA.png)
 
 # [API 时序图](../document/ChatroomUIKit_zh.md#api-时序图)
 
