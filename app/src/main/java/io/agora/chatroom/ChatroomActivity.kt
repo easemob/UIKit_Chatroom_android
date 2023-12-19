@@ -120,7 +120,7 @@ class ChatroomActivity : ComponentActivity(), ChatroomResultListener, ChatroomCh
 
         val owner = UserEntity(
             userId = ownerId,
-            nickName = room.nickname,
+            nickname = room.nickname,
             avatarURL = room.iconKey
         )
 
@@ -376,7 +376,7 @@ class ChatroomActivity : ComponentActivity(), ChatroomResultListener, ChatroomCh
     override fun onUserBeKicked(roomId: String, userId: String) {
         if (roomId == room.id){
             runOnUiThread {
-                Toast.makeText(this,resources.getString(R.string.chatroom_report_success), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,resources.getString(R.string.chatroom_kick), Toast.LENGTH_SHORT).show()
             }
             finish()
         }

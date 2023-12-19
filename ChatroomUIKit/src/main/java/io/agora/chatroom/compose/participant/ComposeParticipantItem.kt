@@ -24,7 +24,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -37,7 +36,6 @@ import io.agora.chatroom.model.UIChatroomInfo
 import io.agora.chatroom.service.ChatClient
 import io.agora.chatroom.service.UserEntity
 import io.agora.chatroom.theme.ChatroomUIKitTheme
-import io.agora.chatroom.theme.neutralColor20
 import io.agora.chatroom.uikit.R
 import io.agora.chatroom.viewmodel.member.MemberListViewModel
 
@@ -130,7 +128,7 @@ fun DefaultMemberItem(
                 .fillMaxHeight()
         ) {
             Text(
-                text = user.nickName?.let {
+                text = user.nickname?.let {
                     it.ifBlank { user.userId }
                 } ?: user.userId ,
                 modifier = Modifier
@@ -211,7 +209,7 @@ fun MemberItemPreview() {
                 UIChatroomService(UIChatroomInfo("roomID",UserEntity("userId")))),
             user = UserEntity(
                 userId = "123",
-                nickName = "nickname",
+                nickname = "nickname",
                 avatarURL = "",
                 identify = ""
             )

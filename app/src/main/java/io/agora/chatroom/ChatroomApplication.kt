@@ -33,7 +33,7 @@ class ChatroomApplication : Application() {
             chatOptions = ChatSDKOptions(enableDebug = true),
             uiOptions = UiOptions(
                 targetLanguageList = listOf(currentLanguage),
-                useGiftsInList = false,
+                chatBarrageShowGift = false,
             )
         )
 

@@ -224,10 +224,10 @@ open class MemberListViewModel(
             ChatroomUIKitClient.getInstance().getCacheManager().getRoomMuteList(roomId).let { list ->
                 val result = list.filter { userId ->
                     val user = ChatroomUIKitClient.getInstance().getCacheManager().getUserInfo(userId)
-                    if (user.nickName.isNullOrEmpty()) {
+                    if (user.nickname.isNullOrEmpty()) {
                         user.userId.contains(keyword)
                     } else {
-                        if (!user.nickName!!.contains(keyword)) {
+                        if (!user.nickname!!.contains(keyword)) {
                             user.userId.contains(keyword)
                         }else {
                             true
@@ -241,12 +241,18 @@ open class MemberListViewModel(
             }
         } else {
             ChatroomUIKitClient.getInstance().getCacheManager().getRoomMemberList(roomId).let { list ->
-                val result = list.filter { userId ->
+                val owner = ChatroomUIKitClient.getInstance().getContext().getCurrentRoomInfo().roomOwner?.userId ?: ""
+                val contains = list.contains(owner)
+                val newList = list.toMutableList()
+                if (!contains) {
+                    newList.add(0,owner)
+                }
+                val result = newList.filter { userId ->
                     val user = ChatroomUIKitClient.getInstance().getCacheManager().getUserInfo(userId)
-                    if (user.nickName.isNullOrEmpty()) {
+                    if (user.nickname.isNullOrEmpty()) {
                         user.userId.contains(keyword)
                     } else {
-                        if (!user.nickName!!.contains(keyword)) {
+                        if (!user.nickname!!.contains(keyword)) {
                             user.userId.contains(keyword)
                         }else {
                             true
