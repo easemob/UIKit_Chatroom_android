@@ -290,6 +290,9 @@ class ChatroomUIKitClient {
     fun clear(){
         eventListeners.clear()
         giftListeners.clear()
+        userStateChangeListeners.clear()
+        unRegisterMessageListener()
+        unRegisterChatroomChangeListener()
     }
 
     @Synchronized
@@ -313,8 +316,16 @@ class ChatroomUIKitClient {
         ChatClient.getInstance().chatManager().addMessageListener(messageListener)
     }
 
+    private fun unRegisterMessageListener(){
+        ChatClient.getInstance().chatManager().removeMessageListener(messageListener)
+    }
+
     private fun registerChatroomChangeListener() {
         ChatClient.getInstance().chatroomManager().addChatRoomChangeListener(chatroomChangeListener)
+    }
+
+    private fun unRegisterChatroomChangeListener(){
+        ChatClient.getInstance().chatroomManager().removeChatRoomListener(chatroomChangeListener)
     }
 
     private fun registerConnectListener() {

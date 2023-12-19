@@ -72,7 +72,6 @@ class MainActivity : ComponentActivity() {
             var isDarkTheme by rememberSaveable {
                 mutableStateOf(isDark)
             }
-            roomListViewModel.fetchRoomList()
             val userDetail = SPUtils.getInstance(LocalContext.current.applicationContext as Application).getUerInfo()
             SPUtils.getInstance(LocalContext.current.applicationContext as Application).saveCurrentThemeStyle(isDarkTheme)
             ChatroomUIKitTheme(isDarkTheme = isDarkTheme) {
@@ -242,7 +241,7 @@ class MainActivity : ComponentActivity() {
         super.onResume()
         GlobalScope.launch {
             delay(200L)
-            roomListViewModel.refresh()
+            roomListViewModel.fetchRoomList()
         }
         runBlocking {
             delay(300L)
