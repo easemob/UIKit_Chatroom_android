@@ -113,7 +113,7 @@ fun ComposeGiftItem(
 
         val userInfo = ChatroomUIKitClient.getInstance().getChatroomUser().getUserInfo(gift.sendUser.userId)
 
-        val userName = userInfo.nickName?.let {
+        val userName = userInfo.nickname?.let {
             it.ifEmpty { userInfo.userId }
         } ?: userInfo.userId
 

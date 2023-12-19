@@ -204,7 +204,7 @@ class UISearchActivity : ComponentActivity() {
                                 1 -> {
                                     if (item.title == context.getString(R.string.menu_item_remove)){
                                         dialogViewModel.title = context.getString(R.string.dialog_title_remove_user,
-                                            memberMenuViewModel.user.let { if (it.nickName.isNullOrEmpty()) it.userId else it.nickName }
+                                            memberMenuViewModel.user.let { if (it.nickname.isNullOrEmpty()) it.userId else it.nickname }
                                         )
                                         dialogViewModel.showCancel = true
                                         dialogViewModel.showDialog()

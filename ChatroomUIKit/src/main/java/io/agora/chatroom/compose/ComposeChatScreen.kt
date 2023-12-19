@@ -231,7 +231,7 @@ fun ComposeChatScreen(
                                 )
                             }
                             R.id.action_menu_remove -> {
-                                dialogViewModel.title = context.getString(R.string.dialog_title_remove_user, memberMenuViewModel.user.nickName)
+                                dialogViewModel.title = context.getString(R.string.dialog_title_remove_user, memberMenuViewModel.user.nickname)
                                 dialogViewModel.showCancel = true
                                 dialogViewModel.showDialog()
                             }

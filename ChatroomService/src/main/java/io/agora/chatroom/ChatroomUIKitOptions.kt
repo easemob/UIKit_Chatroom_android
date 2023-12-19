@@ -12,12 +12,17 @@ data class ChatroomUIKitOptions(
  * @param useUserProperties Whether to use user properties.
  */
 data class ChatSDKOptions(
+    // Is debug mode enabled
     var enableDebug: Boolean = false,
+    // is autoLogin
     val autoLogin: Boolean = false,
+    // Whether to use user attributes.
     val useUserProperties: Boolean = true
 )
 
 data class UiOptions(
-    var useGiftsInList: Boolean = false,
+    // Whether to show the gift information in the chat barrage area.
+    var chatBarrageShowGift: Boolean = false,
+    // Translate target language list
     val targetLanguageList:List<String> = mutableListOf(),
 )

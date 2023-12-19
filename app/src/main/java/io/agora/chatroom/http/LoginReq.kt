@@ -10,11 +10,11 @@ data class LoginReq(
 )
 
 fun LoginReq.toUserProtocol(): UserInfoProtocol {
-    return UserInfoProtocol(userId = username, nickName = nickname, avatarURL = icon_key)
+    return UserInfoProtocol(userId = username, nickname = nickname, avatarURL = icon_key)
 }
 
 fun UserInfoProtocol.toLoginReq(): LoginReq {
-    return LoginReq(username = userId, nickname = nickName?:"", icon_key = avatarURL?:"")
+    return LoginReq(username = userId, nickname = nickname?:"", icon_key = avatarURL?:"")
 }
 
 fun LoginReq.toJson(): String {

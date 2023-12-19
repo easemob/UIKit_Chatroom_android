@@ -26,7 +26,6 @@ import io.agora.chatroom.service.ChatroomChangeListener
 import io.agora.chatroom.service.ChatroomService
 import io.agora.chatroom.service.GiftEntityProtocol
 import io.agora.chatroom.service.GiftReceiveListener
-import io.agora.chatroom.service.GiftService
 import io.agora.chatroom.service.OnError
 import io.agora.chatroom.service.OnSuccess
 import io.agora.chatroom.service.OnValueSuccess
@@ -35,7 +34,6 @@ import io.agora.chatroom.service.UserService
 import io.agora.chatroom.service.UserStateChangeListener
 import io.agora.chatroom.service.cache.UIChatroomCacheManager
 import io.agora.chatroom.service.serviceImpl.ChatroomServiceImpl
-import io.agora.chatroom.service.serviceImpl.GiftServiceImpl
 import io.agora.chatroom.service.serviceImpl.UserServiceImpl
 import io.agora.chatroom.service.transfer
 import io.agora.chatroom.utils.GsonTools
@@ -195,7 +193,7 @@ class ChatroomUIKitClient {
     }
 
     fun getUseGiftsInMsg():Boolean{
-        return uiOptions.useGiftsInList
+        return uiOptions.chatBarrageShowGift
     }
 
     fun parseUserInfo(message: ChatMessage):UserInfoProtocol?{
@@ -508,6 +506,9 @@ class ChatroomUIKitClient {
                     if (it.type == ChatMessageType.TXT) {
                         try {
                             for (listener in eventListeners.iterator()) {
+                                parseMsgUserInfo(it)?.let { userInfo->
+                                    chatroomUser.setUserInfo(it.from,userInfo.toUser())
+                                }
                                 listener.onMessageReceived(it)
                             }
                         } catch (e: Exception) {
@@ -529,7 +530,7 @@ class ChatroomUIKitClient {
                                     UICustomMsgType.CHATROOMUIKITUSERJOIN -> {
                                         try {
                                             for (listener in eventListeners.iterator()) {
-                                                parseJoinedMsg(it)?.let { userInfo->
+                                                parseMsgUserInfo(it)?.let { userInfo->
                                                     chatroomUser.setUserInfo(it.from,userInfo.toUser())
                                                 }
                                                 listener.onUserJoined(it.conversationId(),it.from)
@@ -598,7 +599,7 @@ class ChatroomUIKitClient {
             return null
         }
 
-        private fun parseJoinedMsg(msg: ChatMessage):UserInfoProtocol? {
+        private fun parseMsgUserInfo(msg: ChatMessage):UserInfoProtocol? {
             if (msg.ext().containsKey(UIConstant.CHATROOM_UIKIT_USER_INFO)){
                 return try {
                     val jsonObject = msg.getStringAttribute(UIConstant.CHATROOM_UIKIT_USER_INFO)
