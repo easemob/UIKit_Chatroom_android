@@ -75,10 +75,7 @@ open class MemberListViewModel(
         service.getChatService().fetchMembers(roomId, cursor, pageSize, {cursorResult ->
             hasMore = (cursorResult.data.size == pageSize) && !cursorResult.cursor.isNullOrBlank()
             cursor = cursorResult.cursor
-            val mutedList = ChatroomUIKitClient.getInstance().getCacheManager().getRoomMuteList(roomId)
-            val memberList = cursorResult.data.filter { userId ->
-                !mutedList.contains(userId)
-            }
+            val memberList = cursorResult.data
             ChatroomUIKitClient.getInstance().getCacheManager().saveRoomMemberList(roomId, memberList)
             val propertyList = memberList.filter { userId ->
                 !ChatroomUIKitClient.getInstance().getCacheManager().inCache(userId)
@@ -168,7 +165,6 @@ open class MemberListViewModel(
         onError: OnError = { _, _ ->}
     ) {
         service.getChatService().operateUser(roomId, userId, UserOperationType.MUTE, { chatroom ->
-            ChatroomUIKitClient.getInstance().getCacheManager().removeRoomMember(roomId, userId)
             ChatroomUIKitClient.getInstance().getCacheManager().saveRoomMuteList(roomId, listOf(userId))
             onSuccess.invoke(ChatroomUIKitClient.getInstance().getChatroomUser().getUserInfo(userId))
         }, { code, error ->
