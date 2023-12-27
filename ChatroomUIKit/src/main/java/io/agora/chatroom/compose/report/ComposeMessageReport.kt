@@ -104,7 +104,8 @@ fun DefaultReportContent(
         tabIndicatorHeight = 4.dp,
         tabIndicatorShape = RoundedCornerShape(4.dp),
     ) { page ->
-        val tagList = viewModel.contentList
+        val tagList = context.resources.getStringArray(R.array.report_tag)
+        val reasonList = viewModel.contentList
 
         var selectedOption by remember { mutableIntStateOf(0) }
 
@@ -145,7 +146,7 @@ fun DefaultReportContent(
                         .wrapContentHeight(),
                     verticalArrangement = Arrangement.spacedBy(10.dp),
                 ) {
-                    itemsIndexed(tagList){ index, item ->
+                    itemsIndexed(reasonList){ index, item ->
                         Row(
                             Modifier
                                 .fillMaxWidth()
@@ -242,7 +243,11 @@ fun DefaultReportContent(
                         disabledContentColor = Color.Transparent,
                     ),
                     onClick = {
-                    onConfirmClick(UIReportEntity(msgId =viewModel.reportMsgId.value , tag = tagList[selectedOption]))
+                        onConfirmClick(UIReportEntity(
+                            msgId =viewModel.reportMsgId.value ,
+                            tag = tagList[selectedOption],
+                            reason = reasonList[selectedOption]
+                        ))
                 }) {
                     Text(
                         textAlign = TextAlign.Center,
