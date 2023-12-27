@@ -25,6 +25,9 @@ class MessageChatBarViewModel(
     private val _showKeyboard : MutableState<Boolean> = mutableStateOf(false)
     var isShowKeyboard = _showKeyboard
 
+    private val _isClickDelete : MutableState<Boolean> = mutableStateOf(false)
+    var isClickDelete = _isClickDelete
+
     fun showEmoji(){
         _showEmoji.value = true
     }

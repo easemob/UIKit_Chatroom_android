@@ -176,8 +176,8 @@ fun ComposeGiftItem(
         val titleSmall = TextStyle(
             fontFamily = FontFamily(Font("RobotoNumbersVF.ttf", assetManager = LocalContext.current.assets)),
             fontWeight = FontWeight.Normal,
-            lineHeight = 20.sp,
-            fontSize = 14.sp,
+            lineHeight = 14.sp,
+            fontSize = 10.sp,
             color = Color.White,
             letterSpacing = 0.01.sp,
         )

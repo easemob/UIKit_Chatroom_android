@@ -100,34 +100,34 @@ val neutralSpecialColor98 = neutralSpecialColor(LightnessThemeStyle.NINETY_EIGHT
 val neutralSpecialColor100 = neutralSpecialColor(LightnessThemeStyle.ONE_HUNDRED)
 
 // barrageLightColor
-val barrageLightColor0 = barrageColor(LightnessThemeStyle.ZERO,AlphaThemeStyle.ZERO)
-val barrageLightColor10 = barrageColor(LightnessThemeStyle.ZERO,AlphaThemeStyle.TEN)
-val barrageLightColor20 = barrageColor(LightnessThemeStyle.ZERO,AlphaThemeStyle.TWENTY)
-val barrageLightColor30 = barrageColor(LightnessThemeStyle.ZERO,AlphaThemeStyle.THIRTY)
-val barrageLightColor40 = barrageColor(LightnessThemeStyle.ZERO,AlphaThemeStyle.FORTY)
-val barrageLightColor50 = barrageColor(LightnessThemeStyle.ZERO,AlphaThemeStyle.FIFTY)
-val barrageLightColor60 = barrageColor(LightnessThemeStyle.ZERO,AlphaThemeStyle.SIXTY)
-val barrageLightColor70 = barrageColor(LightnessThemeStyle.ZERO,AlphaThemeStyle.SEVENTY)
-val barrageLightColor80 = barrageColor(LightnessThemeStyle.ZERO,AlphaThemeStyle.EIGHTY)
-val barrageLightColor90 = barrageColor(LightnessThemeStyle.ZERO,AlphaThemeStyle.NINETY)
-val barrageLightColor95 = barrageColor(LightnessThemeStyle.ZERO,AlphaThemeStyle.NINETY_FIVE)
-val barrageLightColor98 = barrageColor(LightnessThemeStyle.ZERO,AlphaThemeStyle.NINETY_EIGHT)
-val barrageLightColor100 = barrageColor(LightnessThemeStyle.ZERO,AlphaThemeStyle.ONE_HUNDRED)
+val barrageLightColor0 = barrageColor(LightnessThemeStyle.ONE_HUNDRED,AlphaThemeStyle.ZERO)
+val barrageLightColor10 = barrageColor(LightnessThemeStyle.ONE_HUNDRED,AlphaThemeStyle.TEN)
+val barrageLightColor20 = barrageColor(LightnessThemeStyle.ONE_HUNDRED,AlphaThemeStyle.TWENTY)
+val barrageLightColor30 = barrageColor(LightnessThemeStyle.ONE_HUNDRED,AlphaThemeStyle.THIRTY)
+val barrageLightColor40 = barrageColor(LightnessThemeStyle.ONE_HUNDRED,AlphaThemeStyle.FORTY)
+val barrageLightColor50 = barrageColor(LightnessThemeStyle.ONE_HUNDRED,AlphaThemeStyle.FIFTY)
+val barrageLightColor60 = barrageColor(LightnessThemeStyle.ONE_HUNDRED,AlphaThemeStyle.SIXTY)
+val barrageLightColor70 = barrageColor(LightnessThemeStyle.ONE_HUNDRED,AlphaThemeStyle.SEVENTY)
+val barrageLightColor80 = barrageColor(LightnessThemeStyle.ONE_HUNDRED,AlphaThemeStyle.EIGHTY)
+val barrageLightColor90 = barrageColor(LightnessThemeStyle.ONE_HUNDRED,AlphaThemeStyle.NINETY)
+val barrageLightColor95 = barrageColor(LightnessThemeStyle.ONE_HUNDRED,AlphaThemeStyle.NINETY_FIVE)
+val barrageLightColor98 = barrageColor(LightnessThemeStyle.ONE_HUNDRED,AlphaThemeStyle.NINETY_EIGHT)
+val barrageLightColor100 = barrageColor(LightnessThemeStyle.ONE_HUNDRED,AlphaThemeStyle.ONE_HUNDRED)
 
 // barrageDarkColor
-val barrageDarkColor0 = barrageColor(LightnessThemeStyle.ONE_HUNDRED,AlphaThemeStyle.ZERO)
-val barrageDarkColor10 = barrageColor(LightnessThemeStyle.ONE_HUNDRED,AlphaThemeStyle.TEN)
-val barrageDarkColor20 = barrageColor(LightnessThemeStyle.ONE_HUNDRED,AlphaThemeStyle.TWENTY)
-val barrageDarkColor30 = barrageColor(LightnessThemeStyle.ONE_HUNDRED,AlphaThemeStyle.THIRTY)
-val barrageDarkColor40 = barrageColor(LightnessThemeStyle.ONE_HUNDRED,AlphaThemeStyle.FORTY)
-val barrageDarkColor50 = barrageColor(LightnessThemeStyle.ONE_HUNDRED,AlphaThemeStyle.FIFTY)
-val barrageDarkColor60 = barrageColor(LightnessThemeStyle.ONE_HUNDRED,AlphaThemeStyle.SIXTY)
-val barrageDarkColor70 = barrageColor(LightnessThemeStyle.ONE_HUNDRED,AlphaThemeStyle.SEVENTY)
-val barrageDarkColor80 = barrageColor(LightnessThemeStyle.ONE_HUNDRED,AlphaThemeStyle.EIGHTY)
-val barrageDarkColor90 = barrageColor(LightnessThemeStyle.ONE_HUNDRED,AlphaThemeStyle.NINETY)
-val barrageDarkColor95 = barrageColor(LightnessThemeStyle.ONE_HUNDRED,AlphaThemeStyle.NINETY_FIVE)
-val barrageDarkColor98 = barrageColor(LightnessThemeStyle.ONE_HUNDRED,AlphaThemeStyle.NINETY_EIGHT)
-val barrageDarkColor100 = barrageColor(LightnessThemeStyle.ONE_HUNDRED,AlphaThemeStyle.ONE_HUNDRED)
+val barrageDarkColor0 = barrageColor(LightnessThemeStyle.ZERO,AlphaThemeStyle.ZERO)
+val barrageDarkColor10 = barrageColor(LightnessThemeStyle.ZERO,AlphaThemeStyle.TEN)
+val barrageDarkColor20 = barrageColor(LightnessThemeStyle.ZERO,AlphaThemeStyle.TWENTY)
+val barrageDarkColor30 = barrageColor(LightnessThemeStyle.ZERO,AlphaThemeStyle.THIRTY)
+val barrageDarkColor40 = barrageColor(LightnessThemeStyle.ZERO,AlphaThemeStyle.FORTY)
+val barrageDarkColor50 = barrageColor(LightnessThemeStyle.ZERO,AlphaThemeStyle.FIFTY)
+val barrageDarkColor60 = barrageColor(LightnessThemeStyle.ZERO,AlphaThemeStyle.SIXTY)
+val barrageDarkColor70 = barrageColor(LightnessThemeStyle.ZERO,AlphaThemeStyle.SEVENTY)
+val barrageDarkColor80 = barrageColor(LightnessThemeStyle.ZERO,AlphaThemeStyle.EIGHTY)
+val barrageDarkColor90 = barrageColor(LightnessThemeStyle.ZERO,AlphaThemeStyle.NINETY)
+val barrageDarkColor95 = barrageColor(LightnessThemeStyle.ZERO,AlphaThemeStyle.NINETY_FIVE)
+val barrageDarkColor98 = barrageColor(LightnessThemeStyle.ZERO,AlphaThemeStyle.NINETY_EIGHT)
+val barrageDarkColor100 = barrageColor(LightnessThemeStyle.ZERO,AlphaThemeStyle.ONE_HUNDRED)
 
 // gradientColors
 val gradientColors0 = listOf(primaryColor0,primaryEndHue20)
@@ -233,9 +233,13 @@ data class UIColors(
     val inputHint: Color,
     val tabUnSelected:Color,
     val barrageL20D10:Color,
+    val neutralL30D50:Color,
+    val neutralL30D98:Color,
     val neutralL50D50:Color,
+    val neutralL50D70:Color,
     val neutralL70D40:Color,
     val neutralL98D98:Color,
+    val neutralL98D30:Color,
     val neutralL95D20:Color,
     val primaryL95D20:Color,
     val primaryL80D80:Color,
@@ -269,13 +273,17 @@ data class UIColors(
             tabUnSelected = neutralColor70,
             primaryL95D20 = primaryColor95,
             neutralL98D98 = neutralColor98,
-            barrageL20D10 = barrageLightColor20,
+            barrageL20D10 = barrageLightColor10,
             secondaryL80D70 = secondaryColor80,
             primaryL80D80 = primaryColor80,
             neutralL95D00 = neutralColor95,
             neutralL50D50 = neutralColor50,
             neutralL70D40 = neutralColor70,
             neutralL95D20 = neutralColor95,
+            neutralL50D70 = neutralColor50,
+            neutralL30D50 = neutralColor30,
+            neutralL98D30 = neutralColor98,
+            neutralL30D98 = neutralColor30,
         )
 
         @Composable
@@ -303,13 +311,17 @@ data class UIColors(
             tabUnSelected = neutralColor40,
             primaryL95D20 = primaryColor20,
             neutralL98D98 = neutralColor98,
-            barrageL20D10 = barrageDarkColor10,
+            barrageL20D10 = barrageDarkColor20,
             secondaryL80D70 = secondaryColor70,
             primaryL80D80 = primaryColor80,
             neutralL95D00 = neutralColor0,
             neutralL50D50 = neutralColor50,
             neutralL70D40 = neutralColor40,
             neutralL95D20 = neutralColor20,
+            neutralL50D70 = neutralColor70,
+            neutralL30D50 = neutralColor50,
+            neutralL98D30 = neutralColor30,
+            neutralL30D98 = neutralColor98,
         )
     }
 }

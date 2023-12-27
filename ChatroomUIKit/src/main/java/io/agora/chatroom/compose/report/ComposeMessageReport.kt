@@ -97,7 +97,7 @@ fun DefaultReportContent(
 {
     val context = LocalContext.current
     val tabList = mutableListOf<TabInfo>()
-    tabList += TabInfo(context.resources.getString(R.string.compose_message_report))
+    tabList += TabInfo(context.resources.getString(R.string.report_button_click_menu_title))
     ComposePagerWithTabs(
         viewModel = PagerViewModel(tabList = tabList),
         modifier = modifier,
@@ -123,7 +123,7 @@ fun DefaultReportContent(
                         start.linkTo(parent.start)
                     }
                 ,
-                text = context.resources.getString(R.string.compose_message_report_violation),
+                text = context.resources.getString(R.string.report_button_click_menu_subtitle_violation),
                 style = ChatroomUIKitTheme.typography.titleSmall.copy(
                     color = ChatroomUIKitTheme.colors.neutralL50D50
                 )
@@ -215,7 +215,7 @@ fun DefaultReportContent(
                         textAlign = TextAlign.Center,
                         modifier = Modifier
                             .fillMaxSize(),
-                        text = stringResource(id = R.string.compose_message_report_cancel),
+                        text = stringResource(id = R.string.report_button_click_menu_button_cancel),
                         style = ChatroomUIKitTheme.typography.titleMedium.copy(
                             color = ChatroomUIKitTheme.colors.onBackground
                         )
@@ -248,7 +248,7 @@ fun DefaultReportContent(
                         textAlign = TextAlign.Center,
                         modifier = Modifier
                             .fillMaxSize(),
-                        text = stringResource(id = R.string.compose_message_report),
+                        text = stringResource(id = R.string.report_button_click_menu_button_report),
                         style = ChatroomUIKitTheme.typography.titleMedium.copy(
                             color = ChatroomUIKitTheme.colors.neutralL98D98
                         )

@@ -3,6 +3,8 @@ package io.agora.chatroom.compose.input
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -219,16 +221,19 @@ fun SearchInputFiled(
         trailingIcon = {
             if (trailingIcon == null) {
                 if (textValue.isNotBlank()) {
-                    IconButton(onClick = {
-                        textValue = ""
-                        onClearClick.invoke()
-                    }) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.icon_clear),
-                            contentDescription = "Search magnifier",
-                            modifier = Modifier.size(22.dp)
-                        )
-                    }
+                    Icon(
+                        painter = painterResource(id = R.drawable.icon_clear),
+                        contentDescription = "Search magnifier",
+                        modifier = Modifier
+                            .size(22.dp)
+                            .clickable(
+                                indication = null,
+                                interactionSource = remember { MutableInteractionSource() },
+                            ){
+                                textValue = ""
+                                onClearClick.invoke()
+                            }
+                    )
                 }
             } else {
                 trailingIcon.invoke()

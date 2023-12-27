@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="report_tag">
-        <item>不受欢迎的商业内容或垃圾信息</item>
-        <item>色情或露骨的内容</item>
-        <item>儿童虐待</item>
-        <item>仇恨言论或暴力内容</item>
-        <item>恐怖主义</item>
-        <item>骚扰或欺凌</item>
-        <item>自杀或自伤</item>
-        <item>误导信息</item>
-        <item>其他</item>
+        <item>@string/violation_reason_1</item>
+        <item>@string/violation_reason_2</item>
+        <item>@string/violation_reason_3</item>
+        <item>@string/violation_reason_4</item>
+        <item>@string/violation_reason_5</item>
+        <item>@string/violation_reason_6</item>
+        <item>@string/violation_reason_7</item>
+        <item>@string/violation_reason_8</item>
+        <item>@string/violation_reason_9</item>
     </string-array>
 </resources>

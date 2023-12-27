@@ -16,6 +16,7 @@ import io.agora.chatroom.uikit.R
 import io.agora.chatroom.viewmodel.UIRoomViewModel
 import io.agora.chatroom.viewmodel.gift.ComposeGiftListViewModel
 import io.agora.chatroom.viewmodel.gift.ComposeGiftSheetViewModel
+import io.agora.chatroom.viewmodel.menu.RoomMemberMenuViewModel
 
 class MessagesViewModelFactory(
     private val context: Context,
@@ -80,6 +81,16 @@ class MessagesViewModelFactory(
         ComposeGiftListViewModel::class.java to {
             ComposeGiftListViewModel(
                 service = service,
+            )
+        },
+
+        RoomMemberMenuViewModel::class.java to {
+            RoomMemberMenuViewModel(
+                isDarkTheme = ChatroomUIKitClient.getInstance().getCurrentTheme(),
+                title = "",
+                menuList = emptyList(),
+                isShowTitle = true,
+                isShowCancel = true,
             )
         },
     )

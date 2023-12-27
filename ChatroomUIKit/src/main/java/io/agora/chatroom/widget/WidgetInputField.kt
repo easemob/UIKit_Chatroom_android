@@ -2,11 +2,14 @@ package io.agora.chatroom.widget
 
 import android.text.Editable
 import android.text.InputType
+import android.text.TextUtils
 import android.text.TextWatcher
 import android.view.Gravity
+import android.view.KeyEvent
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
+import android.widget.TextView
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -18,8 +21,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
@@ -48,6 +51,7 @@ import kotlinx.coroutines.delay
 @Composable
 fun WidgetInputField(
     onValueChange: (String) -> Unit,
+    onKeyDown:(String) -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     viewModel: MessageChatBarViewModel,
@@ -59,7 +63,8 @@ fun WidgetInputField(
     val emoji = viewModel.emoji
     val isInsertEmoji = viewModel.isInsertEmoji
     val textColor = ChatroomUIKitTheme.colors.onBackground
-    val hintColor = ChatroomUIKitTheme.colors.onBackground
+    val hintColor = ChatroomUIKitTheme.colors.inputHint
+    val context = LocalContext.current
 
     val focusManager = LocalFocusManager.current
 
@@ -71,25 +76,42 @@ fun WidgetInputField(
         FocusRequester()
     }
 
+    val editText = remember { EditText(context) }
     AndroidView(
         factory = { context ->
-            EditText(context).apply {
+            editText.apply {
                 layoutParams = ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT
                 )
                 this.gravity = Gravity.CENTER_VERTICAL
-                this.setPadding(16,0,12,0)
+                this.setPadding(30,0,12,0)
                 inputType = InputType.TYPE_CLASS_TEXT
                 imeOptions = EditorInfo.IME_ACTION_DONE
                 this.maxLines = maxLines
                 this.isEnabled = enabled
                 this.background = null
                 this.hint = hint
+                this.textCursorDrawable = context.getDrawable(R.drawable.text_cursor_color)
                 this.setHintTextColor(hintColor.toArgb())
                 this.textSize = 20f
                 this.setTextColor(textColor.toArgb())
                 this.layoutParams = layoutParams
+
+                setOnEditorActionListener(object : TextView.OnEditorActionListener{
+                    override fun onEditorAction(
+                        v: TextView?,
+                        actionId: Int,
+                        event: KeyEvent?
+                    ): Boolean {
+                        if (actionId == EditorInfo.IME_ACTION_DONE) {
+                            val text = text.toString()
+                            onKeyDown(text)
+                            return true
+                        }
+                        return false
+                    }
+                })
 
                 addTextChangedListener(object : TextWatcher {
                     override fun beforeTextChanged(
@@ -126,7 +148,7 @@ fun WidgetInputField(
             .fillMaxSize()
             .focusRequester(focus)
             .focusModifier()
-            .background(ChatroomUIKitTheme.colors.neutralL95D20,ChatroomUIKitTheme.shapes.large)
+            .background(ChatroomUIKitTheme.colors.neutralL95D20, ChatroomUIKitTheme.shapes.large)
             .border(border = border, shape = ChatroomUIKitTheme.shapes.large)
     )
 
@@ -141,4 +163,25 @@ fun WidgetInputField(
             keyboard?.hide()
         }
     }
+
+    LaunchedEffect(viewModel.isClickDelete.value) {
+        if (viewModel.isClickDelete.value){
+            if (!TextUtils.isEmpty(editText.text)) {
+                val event = KeyEvent(
+                    0,
+                    0,
+                    0,
+                    KeyEvent.KEYCODE_DEL,
+                    0,
+                    0,
+                    0,
+                    0,
+                    KeyEvent.KEYCODE_ENDCALL
+                )
+                editText.dispatchKeyEvent(event)
+            }
+            viewModel.isClickDelete.value = false
+        }
+    }
+
 }

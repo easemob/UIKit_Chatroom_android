@@ -5,8 +5,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.AlertDialogDefaults
 import androidx.compose.material3.Button
@@ -56,7 +56,7 @@ fun SimpleDialog(
             Button(
                 modifier = Modifier
                     .padding(6.dp)
-                    .sizeIn(minWidth = 80.dp, maxWidth = 150.dp),
+                    .fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = colors.primary,
                 ),
@@ -74,7 +74,7 @@ fun SimpleDialog(
                     ),
                     modifier = Modifier
                         .padding(6.dp)
-                        .sizeIn(minWidth = 80.dp, maxWidth = 150.dp),
+                        .fillMaxWidth(),
                     onClick = { onCancelClick?.invoke() }) {
                     Text(text = viewModel.cancelText.ifEmpty { stringResource(id = R.string.cancel) }, color = colors.onBackground)
                 }
@@ -172,8 +172,12 @@ fun BaseDialog(
                     }
                 }
                 Row(modifier = Modifier.align(Alignment.CenterHorizontally)) {
-                    dismissButton?.invoke()
-                    confirmButton()
+                    Box(modifier = Modifier.weight(1f)){
+                        dismissButton?.invoke()
+                    }
+                    Box(modifier = Modifier.weight(1f)){
+                        confirmButton()
+                    }
                 }
             }
         }
