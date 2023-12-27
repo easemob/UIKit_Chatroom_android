@@ -221,13 +221,10 @@ open class MemberListViewModel(
                 val result = list.filter { userId ->
                     val user = ChatroomUIKitClient.getInstance().getCacheManager().getUserInfo(userId)
                     if (user.nickname.isNullOrEmpty()) {
-                        user.userId.contains(keyword)
+//                        user.userId.contains(keyword)
+                        false
                     } else {
-                        if (!user.nickname!!.contains(keyword)) {
-                            user.userId.contains(keyword)
-                        }else {
-                            true
-                        }
+                        user.nickname!!.contains(keyword)
                     }
                 }.map { userId ->
                     ChatroomUIKitClient.getInstance().getCacheManager().getUserInfo(userId)
@@ -246,13 +243,9 @@ open class MemberListViewModel(
                 val result = newList.filter { userId ->
                     val user = ChatroomUIKitClient.getInstance().getCacheManager().getUserInfo(userId)
                     if (user.nickname.isNullOrEmpty()) {
-                        user.userId.contains(keyword)
+                        false
                     } else {
-                        if (!user.nickname!!.contains(keyword)) {
-                            user.userId.contains(keyword)
-                        }else {
-                            true
-                        }
+                        user.nickname!!.contains(keyword)
                     }
                 }.map { userId ->
                     ChatroomUIKitClient.getInstance().getCacheManager().getUserInfo(userId)

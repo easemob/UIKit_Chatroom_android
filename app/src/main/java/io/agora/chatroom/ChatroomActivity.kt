@@ -69,6 +69,7 @@ import io.agora.chatroom.viewmodel.gift.ComposeGiftListViewModel
 import io.agora.chatroom.viewmodel.broadcast.GlobalBroadcastViewModel
 import io.agora.chatroom.viewmodel.broadcast.GlobalBroadcastViewModelFactory
 import io.agora.chatroom.viewmodel.member.MembersBottomSheetViewModel
+import io.agora.chatroom.viewmodel.menu.RoomMemberMenuViewModel
 import io.agora.chatroom.viewmodel.messages.MessagesViewModelFactory
 
 class ChatroomActivity : ComponentActivity(), ChatroomResultListener, ChatroomChangeListener {
@@ -87,6 +88,12 @@ class ChatroomActivity : ComponentActivity(), ChatroomResultListener, ChatroomCh
         ViewModelProvider(this@ChatroomActivity as ComponentActivity,
             factory = MessagesViewModelFactory(context = this@ChatroomActivity, roomId = room.id,
                 service = service))[ComposeGiftListViewModel::class.java]
+    }
+
+    private val memberViewModel by lazy {
+        ViewModelProvider(this@ChatroomActivity as ComponentActivity,
+            factory = MessagesViewModelFactory(context = this@ChatroomActivity, roomId = room.id,
+                service = service))[RoomMemberMenuViewModel::class.java]
     }
 
     private val globalBroadcastModel by lazy {
@@ -253,6 +260,7 @@ class ChatroomActivity : ComponentActivity(), ChatroomResultListener, ChatroomCh
                                 roomOwner = owner.transfer(),
                                 roomViewModel = roomViewModel,
                                 giftListViewModel = giftViewModel,
+                                memberMenuViewModel = memberViewModel,
                                 service = service,
                                 onMemberSheetSearchClick = {
                                         tab->
@@ -339,10 +347,6 @@ class ChatroomActivity : ComponentActivity(), ChatroomResultListener, ChatroomCh
                 runOnUiThread {
                     Toast.makeText(this,resources.getString(R.string.chatroom_report_success), Toast.LENGTH_SHORT).show()
                 }
-            }else{
-                runOnUiThread {
-                    Toast.makeText(this,resources.getString(R.string.chatroom_report_fail,"$errorCode $errorMessage"), Toast.LENGTH_SHORT).show()
-                }
             }
         }else if (event == ChatroomResultEvent.SEND_MESSAGE){
             if (errorCode == ChatError.USER_MUTED ){
@@ -370,13 +374,28 @@ class ChatroomActivity : ComponentActivity(), ChatroomResultListener, ChatroomCh
                     Toast.makeText(this,resources.getString(R.string.chatroom_action_unmute_fail,"$errorCode $errorMessage"), Toast.LENGTH_SHORT).show()
                 }
             }
+        } else if (event == ChatroomResultEvent.RECALL_MESSAGE){
+            if (errorCode != ChatError.EM_NO_ERROR){
+                runOnUiThread {
+                    Toast.makeText(this,resources.getString(R.string.chatroom_action_unmute_success), Toast.LENGTH_SHORT).show()
+                }
+            }
+        }else if (event == ChatroomResultEvent.KICK_MEMBER){
+            if (errorCode == ChatError.EM_NO_ERROR){
+                val userInfo = ChatroomUIKitClient.getInstance().getChatroomUser().getUserInfo(memberViewModel.user.userId)
+                runOnUiThread {
+                    Toast.makeText(this,resources.getString(R.string.chatroom_action_kick_user_success,userInfo.nickname?:userInfo.userId), Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 
     override fun onUserBeKicked(roomId: String, userId: String) {
         if (roomId == room.id){
-            runOnUiThread {
-                Toast.makeText(this,resources.getString(R.string.chatroom_kick), Toast.LENGTH_SHORT).show()
+            if (!ChatroomUIKitClient.getInstance().isCurrentRoomOwner()){
+                runOnUiThread {
+                    Toast.makeText(this,resources.getString(R.string.chatroom_kick), Toast.LENGTH_SHORT).show()
+                }
             }
             finish()
         }
@@ -403,8 +422,17 @@ class ChatroomActivity : ComponentActivity(), ChatroomResultListener, ChatroomCh
                 }
             )
         }else{
-            roomViewModel.leaveChatroom()
-            finish()
+            roomViewModel.leaveChatroom(
+                onSuccess = {
+                    runOnUiThread {
+                        Toast.makeText(this,getString(R.string.chatroom_action_ended), Toast.LENGTH_SHORT).show()
+                    }
+                    finish()
+                },
+                onError = {code, error ->
+                    finish()
+                }
+            )
         }
     }
 }

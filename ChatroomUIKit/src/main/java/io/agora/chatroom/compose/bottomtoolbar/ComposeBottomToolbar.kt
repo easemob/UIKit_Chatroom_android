@@ -9,6 +9,7 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -26,6 +27,7 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -39,7 +41,10 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.Bottom
+import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
@@ -47,12 +52,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import io.agora.chatroom.commons.ComposerInputMessageState
 import io.agora.chatroom.commons.UIValidationError
@@ -81,7 +82,6 @@ import kotlinx.coroutines.launch
  * ViewModel, but the user can override if they want more custom behavior.
  * @param onValueChange Handler when the input field value changes.
  * their own integrations, which they need to hook up to their own data providers and UI.
- * @param label Customizable composable that represents the input field label (hint).
  * @param input Customizable composable that represents the input field for the composer, [ComposeMessageInput] by default.
  * by default.
  */
@@ -97,12 +97,19 @@ fun ComposeBottomToolbar(
     onValueChange: (String) -> Unit = {
         viewModel.setMessageInput(it)
     },
+    onKeyDown:(String) -> Unit = {
+        onSendMessage(it)
+    },
     input: @Composable RowScope.(ComposerInputMessageState) -> Unit = { it ->
         @Suppress("DEPRECATION_ERROR")
         DefaultComposerInputContent(
             composerMessageState = it,
             onValueChange = onValueChange,
             viewModel = viewModel,
+            onKeyDown = {
+                onSendMessage(it)
+                viewModel.clearData()
+            }
         )
     },
     trailingContent: @Composable (ComposerInputMessageState) -> Unit = {
@@ -131,9 +138,7 @@ fun ComposeBottomToolbar(
         )
     },
     defaultChatBar: @Composable () -> Unit = {
-        DefaultChatBarComposerContent(
-            isDarkTheme = viewModel.getTheme,
-        )
+        DefaultChatBarComposerContent()
     },
     defaultChatBarMenu: @Composable (ComposerInputMessageState) -> Unit = {
         DefaultChatBarMenuComposerContent(
@@ -152,6 +157,9 @@ fun ComposeBottomToolbar(
         modifier = modifier,
         onSendMessage = { text ->
             onSendMessage(text)
+        },
+        onKeyDown = {
+            onSendMessage(it)
         },
         showInput = showInput,
         input = input,
@@ -180,12 +188,14 @@ fun ComposeBottomToolbar(
     onMenuClick: (Int) -> Unit = {},
     menuItemResource: List<UIChatBarMenuItem>,
     onValueChange: (String) -> Unit = {},
+    onKeyDown:(String) -> Unit = {},
     input: @Composable RowScope.(ComposerInputMessageState) -> Unit = { it ->
         @Suppress("DEPRECATION_ERROR")
         DefaultComposerInputContent(
             composerMessageState = composerMessageState,
             onValueChange = onValueChange,
             viewModel = viewModel,
+            onKeyDown = onKeyDown
         )
     },
     trailingContent: @Composable (ComposerInputMessageState) -> Unit = {
@@ -211,9 +221,7 @@ fun ComposeBottomToolbar(
         )
     },
     defaultChatBar: @Composable ( ) -> Unit = {
-        DefaultChatBarComposerContent(
-            isDarkTheme = isDarkTheme,
-        )
+        DefaultChatBarComposerContent()
     },
     defaultChatBarMenu: @Composable (ComposerInputMessageState) -> Unit = {
         DefaultChatBarMenuComposerContent(
@@ -277,7 +285,7 @@ fun ComposeBottomToolbar(
                         .fillMaxWidth()
                         .height(52.dp)
                         .background(ChatroomUIKitTheme.colors.background),
-                    verticalAlignment = Bottom
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
 
                     voiceContent(composerMessageState)
@@ -312,7 +320,7 @@ fun ComposeBottomToolbar(
                     DefaultComposerEmoji(
                         maxH = exKh,
                         emojis = emojiList,
-                        viewModel = viewModel
+                        viewModel = viewModel,
                     )
                 }else{
                     Row(
@@ -336,7 +344,7 @@ fun ComposeBottomToolbar(
                         .fillMaxWidth()
                         .height(52.dp)
                         .background(Color.Transparent),
-                    verticalAlignment = Bottom,
+                    verticalAlignment = Alignment.CenterVertically,
                 ){
                     Row (
                         horizontalArrangement = Arrangement.spacedBy(0.dp, Alignment.Start),
@@ -376,7 +384,7 @@ fun DefaultComposerEmoji(
     maxH:Int,
     viewModel: MessageChatBarViewModel,
 ){
-    Column(modifier = modifier
+    Box(modifier = modifier
         .fillMaxWidth()
         .height(maxH.dp)
         .background(ChatroomUIKitTheme.colors.background)
@@ -396,6 +404,32 @@ fun DefaultComposerEmoji(
                 )
             }
         }
+
+        Box(
+            contentAlignment = Center,
+            modifier = Modifier
+                .clickable(
+                    indication = null,
+                    interactionSource = remember { MutableInteractionSource() },
+                ) {
+                    viewModel.isClickDelete.value = true
+                }
+                .padding(end = 24.dp)
+                .size(36.dp)
+                .clip(CircleShape)
+                .align(Alignment.BottomEnd)
+                .background(ChatroomUIKitTheme.colors.neutralL98D30)
+                .border(color = Color(0x26464E53), width = 0.5.dp, shape = CircleShape)
+        ){
+            Icon(
+                modifier = Modifier
+                    .size(20.dp, 20.dp),
+                painter = painterResource(id = R.drawable.icon_emoji_pick),
+                contentDescription = "",
+                tint = ChatroomUIKitTheme.colors.neutralL30D98
+            )
+        }
+
     }
 }
 
@@ -404,12 +438,14 @@ fun RowScope.DefaultComposerInputContent(
     viewModel: MessageChatBarViewModel,
     composerMessageState: ComposerInputMessageState,
     onValueChange: (String) -> Unit,
+    onKeyDown:(String) -> Unit,
 ) {
     ComposeMessageInput(
         modifier = Modifier.weight(1f),
         viewModel = viewModel,
         composerMessageState = composerMessageState,
         onValueChange = onValueChange,
+        onKeyDown = onKeyDown
     )
 }
 
@@ -428,28 +464,22 @@ internal fun DefaultMessageComposerTrailingContent(
     ownCapabilities: Set<String>,
     onSendMessage: (String) -> Unit,
 ) {
-    val isSendButtonEnabled = ownCapabilities.contains(UICapabilities.SEND_MESSAGE)
     val isInputValid by lazy { (value.isNotBlank()) && validationErrors.isEmpty() }
-    val description = stringResource(id = R.string.stream_compose_cd_send_button)
 
-    IconButton(
-        modifier = Modifier.semantics { contentDescription = description },
-        enabled = isSendButtonEnabled && isInputValid,
-        content = {
-            val layoutDirection = LocalLayoutDirection.current
-
-            Icon(
-                modifier = Modifier.mirrorRtl(layoutDirection = layoutDirection),
-                painter = painterResource(id = R.drawable.icon_send),
-                contentDescription = stringResource(id = R.string.stream_compose_cd_send_button),
-                tint = ChatroomUIKitTheme.colors.primary
-            )
-        },
-        onClick = {
-            if (isInputValid) {
-                onSendMessage(value)
-            }
-        }
+    Icon(
+        modifier = Modifier
+            .padding(top = 8.dp, bottom = 8.dp, end = 12.dp)
+            .clickable(
+                indication = null,
+                interactionSource = remember { MutableInteractionSource() },
+            ) {
+                if (isInputValid) {
+                    onSendMessage(value)
+                }
+            },
+        painter = painterResource(id = R.drawable.icon_send),
+        contentDescription = stringResource(id = R.string.stream_compose_cd_send_button),
+        tint = ChatroomUIKitTheme.colors.primary
     )
 }
 
@@ -505,7 +535,7 @@ internal fun DefaultMessageComposerEmojiContent(
                     .size(30.dp, 30.dp),
                 painter = painterResource(id = resource),
                 contentDescription = stringResource(id = R.string.stream_compose_cd_emoji_button),
-                tint = ChatroomUIKitTheme.colors.onBackground
+                tint = ChatroomUIKitTheme.colors.neutralL30D50
             )
         },
         onClick = {
@@ -574,37 +604,29 @@ internal fun DefaultChatBarMenuComposerContent(
 }
 
 @Composable
-internal fun DefaultChatBarComposerContent(
-    isDarkTheme: Boolean? = false,
-){
-    IconButton(
-        content = {
-            val layoutDirection = LocalLayoutDirection.current
-            Icon(
-                modifier = Modifier
-                    .mirrorRtl(layoutDirection = layoutDirection)
-                    .size(20.dp, 20.dp),
-                painter = painterResource(id = R.drawable.icon_bubble_fill),
-                contentDescription = "",
-                tint = ChatroomUIKitTheme.colors.neutralL98D98,
-            )
-        },
-        enabled = false,
-        onClick = {},
-    )
+internal fun DefaultChatBarComposerContent(){
+    Row(
+        modifier = Modifier.height(38.dp),
+        verticalAlignment =Alignment.CenterVertically
+    ){
+        Icon(
+            modifier = Modifier
+                .padding(start = 8.dp)
+                .size(20.dp, 20.dp),
+            painter = painterResource(id = R.drawable.icon_bubble_fill),
+            contentDescription = "",
+            tint = ChatroomUIKitTheme.colors.neutralL98D98,
+        )
 
-    Text(
-        text = LocalContext.current.resources.getString(R.string.compose_bottom_toolbar_tag),
-        style = TextStyle(
-            fontFamily = FontFamily.Default,
-            fontWeight = FontWeight.Normal,
-            lineHeight = 22.sp,
-            fontSize = 16.sp,
-            color = ChatroomUIKitTheme.colors.neutralL98D98,
-            letterSpacing = 0.03.sp,
-        ),
-        modifier = Modifier.padding(start = 4.dp)
-    )
+        Text(
+            text = LocalContext.current.resources.getString(R.string.compose_bottom_toolbar_tag),
+            style = ChatroomUIKitTheme.typography.titleMedium.copy(
+                color = ChatroomUIKitTheme.colors.neutralL98D98
+            ),
+            modifier = Modifier.padding(start = 4.dp)
+        )
+    }
+
 }
 
 @Composable

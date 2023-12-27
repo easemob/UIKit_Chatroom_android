@@ -16,7 +16,7 @@ class ReportViewModelFactory(
     private val factories: Map<Class<*>, () -> ViewModel> = mapOf(
         ComposeReportViewModel::class.java to {
             ComposeReportViewModel(
-                reportTag = context.resources.getStringArray(R.array.report_tag).toList(),
+                reportTag = context.resources.getStringArray(R.array.report_reason).toList(),
                 service = service
             )
         }

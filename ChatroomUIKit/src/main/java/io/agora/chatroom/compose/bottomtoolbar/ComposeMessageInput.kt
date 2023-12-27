@@ -19,6 +19,7 @@ import io.agora.chatroom.widget.WidgetInputField
 fun ComposeMessageInput(
     composerMessageState: ComposerInputMessageState,
     onValueChange: (String) -> Unit,
+    onKeyDown:(String) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: MessageChatBarViewModel,
     maxLines: Int = DefaultMessageInputMaxLines,
@@ -31,6 +32,7 @@ fun ComposeMessageInput(
         onValueChange = onValueChange,
         enabled = true,
         viewModel = viewModel,
+        onKeyDown = onKeyDown,
     )
 }
 

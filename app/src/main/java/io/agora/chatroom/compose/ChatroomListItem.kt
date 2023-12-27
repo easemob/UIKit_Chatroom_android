@@ -83,8 +83,8 @@ fun ChatroomListItem(
 
                     Text(
                         text = roomDetail.nickname,
-                        style = ChatroomUIKitTheme.typography.bodyMedium,
-                        color = ChatroomUIKitTheme.colors.onBackground
+                        style = ChatroomUIKitTheme.typography.bodySmall,
+                        color = ChatroomUIKitTheme.colors.neutralL50D70
                     )
                 }
 
