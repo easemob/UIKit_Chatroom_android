@@ -341,7 +341,7 @@ class ChatroomActivity : ComponentActivity(), ChatroomResultListener, ChatroomCh
 
     override fun onEventResult(event: ChatroomResultEvent, errorCode: Int, errorMessage: String?) {
         if (event == ChatroomResultEvent.DESTROY_ROOM){
-            exitRoom()
+            finish()
         }else if (event == ChatroomResultEvent.REPORT){
             if (errorCode == ChatError.EM_NO_ERROR){
                 runOnUiThread {
