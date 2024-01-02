@@ -199,7 +199,6 @@ open class MemberListViewModel(
     ) {
         service.getChatService().operateUser(roomId, userId, UserOperationType.KICK, { chatroom ->
             ChatroomUIKitClient.getInstance().getCacheManager().removeRoomMember(roomId, userId)
-            ChatroomUIKitClient.getInstance().getCacheManager().removeRoomMuteMember(roomId, userId)
             onSuccess.invoke(ChatroomUIKitClient.getInstance().getChatroomUser().getUserInfo(userId))
         }, { code, error ->
             onError.invoke(code, error)
