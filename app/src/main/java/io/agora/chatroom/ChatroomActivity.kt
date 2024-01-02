@@ -313,13 +313,20 @@ class ChatroomActivity : ComponentActivity(), ChatroomResultListener, ChatroomCh
             dialogViewModel.showCancel = true
             dialogViewModel.showDialog()
         } else {
-            finish()
+            roomViewModel.leaveChatroom(
+                onSuccess = {
+                    finish()
+                },
+                onError = {code, error ->
+                    finish()
+                }
+            )
         }
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.action == KeyEvent.ACTION_DOWN) {
-            exitRoom()
+            checkIfOwner()
             return true
         }
         return super.onKeyDown(keyCode, event)
@@ -341,6 +348,11 @@ class ChatroomActivity : ComponentActivity(), ChatroomResultListener, ChatroomCh
 
     override fun onEventResult(event: ChatroomResultEvent, errorCode: Int, errorMessage: String?) {
         if (event == ChatroomResultEvent.DESTROY_ROOM){
+            if (errorCode == ChatError.EM_NO_ERROR){
+                runOnUiThread {
+                    Toast.makeText(this,resources.getString(R.string.chatroom_action_ended), Toast.LENGTH_SHORT).show()
+                }
+            }
             finish()
         }else if (event == ChatroomResultEvent.REPORT){
             if (errorCode == ChatError.EM_NO_ERROR){
@@ -408,31 +420,4 @@ class ChatroomActivity : ComponentActivity(), ChatroomResultListener, ChatroomCh
         ChatroomUIKitClient.getInstance().unregisterRoomResultListener(this)
     }
 
-    private fun exitRoom(){
-        if (ChatroomUIKitClient.getInstance().isCurrentRoomOwner()){
-            roomViewModel.endLive(
-                onSuccess = {
-                    finish()
-                },
-                onError = {code,error->
-                    runOnUiThread {
-                        Toast.makeText(this,error, Toast.LENGTH_SHORT).show()
-                    }
-                    finish()
-                }
-            )
-        }else{
-            roomViewModel.leaveChatroom(
-                onSuccess = {
-                    runOnUiThread {
-                        Toast.makeText(this,getString(R.string.chatroom_action_ended), Toast.LENGTH_SHORT).show()
-                    }
-                    finish()
-                },
-                onError = {code, error ->
-                    finish()
-                }
-            )
-        }
-    }
 }

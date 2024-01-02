@@ -10,7 +10,7 @@
     <string name="powered_by">Powered by Easemob</string>
     <string name="dialog_title_end_live">结束直播?</string>
     <string name="chatroom_report_success">举报已提交</string>
-    <string name="chatroom_kick">你已被请出直播间</string>
+    <string name="chatroom_kick">你已被请出聊天室</string>
     <string name="chatroom_mute">你已被禁言，无法发送消息</string>
     <string name="chatroom_action_mute_success">禁言成功</string>
     <string name="chatroom_action_mute_fail">禁言失败:%1$s</string>
