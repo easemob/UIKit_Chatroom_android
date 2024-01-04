@@ -172,8 +172,10 @@ fun BaseDialog(
                     }
                 }
                 Row(modifier = Modifier.align(Alignment.CenterHorizontally)) {
-                    Box(modifier = Modifier.weight(1f)){
-                        dismissButton?.invoke()
+                    dismissButton?.let {
+                        Box(modifier = Modifier.weight(1f)){
+                            dismissButton.invoke()
+                        }
                     }
                     Box(modifier = Modifier.weight(1f)){
                         confirmButton()
