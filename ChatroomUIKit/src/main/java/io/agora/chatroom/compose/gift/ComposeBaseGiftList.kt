@@ -44,7 +44,7 @@ fun <T> ComposeBaseList(
     val listState = rememberLazyListState()
 
     if (viewModel.isAutoClear.value){
-        LaunchedEffect(items) {
+        LaunchedEffect(items.size) {
             timer = System.currentTimeMillis()
             delay(viewModel.autoClearTime.value)
             Log.e("apex","System.currentTimeMillis() - timer:" +

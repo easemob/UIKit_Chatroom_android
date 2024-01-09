@@ -13,7 +13,7 @@ interface GiftService : GiftMessageHandleService {
 data class GiftEntityProtocol(
     val giftId: String,
     val giftName: String,
-    val giftPrice: Int,
+    val giftPrice: String,
     val giftCount: Int = 1,
     val giftIcon: String,
     val giftEffect: String,

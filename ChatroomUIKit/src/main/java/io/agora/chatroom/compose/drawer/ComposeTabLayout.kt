@@ -220,7 +220,7 @@ fun DefaultGiftVpContent(
                                     .padding(start = 2.dp)
                                     .wrapContentWidth()
                                     .wrapContentHeight(),
-                                text = emoji.giftPrice.toString(),
+                                text = emoji.giftPrice,
                                 style = ChatroomUIKitTheme.typography.labelExtraSmall.copy(
                                     color = ChatroomUIKitTheme.colors.onBackground
                                 )

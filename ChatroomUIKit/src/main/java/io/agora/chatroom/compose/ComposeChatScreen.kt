@@ -269,8 +269,8 @@ fun ComposeChatScreen(
             ComposeGiftMessageList(
                 modifier = Modifier
                     .wrapContentWidth()
-                    .height(84.dp)
-                    .padding(bottom = 4.dp)
+                    .height((LocalConfiguration.current.screenHeightDp/6).dp)
+                    .padding(bottom = 2.dp)
                     .constrainAs(giftList) {
                         bottom.linkTo(msgList.top)
                     },
@@ -283,7 +283,7 @@ fun ComposeChatScreen(
                     .constrainAs(msgList) {
                         bottom.linkTo(bottomBar.top)
                     }
-                    .size(296.dp, 164.dp),
+                    .size(296.dp, (LocalConfiguration.current.screenHeightDp/5).dp),
                 onLongItemClick = { index,item->
                     ChatLog.d(TAG,"onLongItemClick $index $item")
                     if (item is ComposeMessageItemState){
