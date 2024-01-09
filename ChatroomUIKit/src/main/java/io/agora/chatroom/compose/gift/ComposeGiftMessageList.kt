@@ -127,13 +127,13 @@ fun ComposeGiftItem(
 
         if (avatarUrl.isBlank()){
             ImageAvatar(
-                modifier = Modifier.size(36.dp, 36.dp).padding(start = 4.dp),
+                modifier = Modifier.wrapContentWidth().wrapContentHeight().padding(start = 4.dp),
                 painter = painterResource(id = R.drawable.icon_default_avatar),
                 contentDescription = "userAvatar"
             )
         }else{
             ImageAvatar(
-                modifier = Modifier.size(36.dp, 36.dp).padding(start = 4.dp),
+                modifier = Modifier.wrapContentWidth().wrapContentHeight().padding(start = 4.dp),
                 painter = userPainter,
                 contentDescription = "userAvatar"
             )
