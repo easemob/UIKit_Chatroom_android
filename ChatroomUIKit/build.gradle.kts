@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "io.agora.chatroom.uikit"
-    compileSdk = 34
+    compileSdk = 33
 
     defaultConfig {
         minSdk = 24
@@ -66,4 +66,10 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
     implementation("io.coil-kt:coil-compose:2.4.0")
     api(project(mapOf("path" to ":ChatroomService")))
+}
+
+
+
+apply {
+    from("../maven-push-release.gradle")
 }

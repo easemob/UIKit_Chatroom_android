@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "io.agora.chatroom.service"
-    compileSdk = 34
+    compileSdk = 33
 
     defaultConfig {
         minSdk = 21

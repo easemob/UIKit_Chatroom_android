@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace = "io.agora.chatroom"
-    compileSdk = 34
+    compileSdk = 33
 
     defaultConfig {
         applicationId = "io.agora.chatroom"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
 
@@ -46,6 +46,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
