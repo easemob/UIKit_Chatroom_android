@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "io.agora.chatroom"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "io.agora.chatroom"
