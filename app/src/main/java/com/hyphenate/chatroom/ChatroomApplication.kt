@@ -40,7 +40,7 @@ class ChatroomApplication : Application() {
         ChatroomUIKitClient.getInstance().setUp(
             applicationContext = this,
             options = chatroomUIKitOptions,
-            appKey = com.hyphenate.chatroom.BuildConfig.CHATROOM_APP_KEY
+            appKey = BuildConfig.CHATROOM_APP_KEY
         )
 
         registerActivityLifecycleCallbacks(activityLifecycleCallbacks)

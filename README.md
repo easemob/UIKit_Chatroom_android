@@ -18,7 +18,7 @@
 - 有效的 [Chat 账号](https://console.easemob.com/user/register)。
 - 开发环境
   - Android Studio Arctic Fox (2020.3.1) 或更高版本
-  - Android API 最低支持 21 。
+  - Android API 最低支持 24 。
   - 使用 Kotlin 语言开发，1.5.21及以上版本。
   - JDK 1.8 及以上版本。
   - Gradle 7.0.0 及以上版本。
