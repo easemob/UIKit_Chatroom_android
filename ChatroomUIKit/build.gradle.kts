@@ -70,6 +70,6 @@ dependencies {
 
 
 
-apply {
-    from("../maven-push-release.gradle")
-}
+//apply {
+//    from("../maven-push-release.gradle")
+//}
