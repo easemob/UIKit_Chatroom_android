@@ -44,7 +44,9 @@ You can use build.gradle to import the ChatroomUIKit library as a dependency for
 
 ## [Local module dependencies](../document/ChatroomUIKit.md#Local-module-dependencies)
 
-Locate the downloaded **ChatroomUIKit** module to import [ChatroomUIKit](../ChatroomUIKit) and [ChatroomService](../ChatroomService) modules to the project.
+## [ChatroomUIKit](https://github.com/easemob/UIKit_Chatroom_android)
+
+Locate the downloaded **ChatroomUIKit** module to import [ChatroomUIKit](../ChatroomUIKit) modules to the project Or use the files in the package ease-chatroomui-kit.aar
 
 1. Open your project in Android Studio.
 
@@ -55,9 +57,7 @@ Locate the downloaded **ChatroomUIKit** module to import [ChatroomUIKit](../Chat
 ```
 // settings.gradle
 include ':ChatroomUIKit'
-include ':ChatroomService'
 project(':ChatroomUIKit').projectDir = new File('../ChatroomUIKit/ChatroomUIKit')
-project(':ChatroomService').projectDir = new File('../ChatroomUIKit/ChatroomService')
 
 // app/build.gradle
 dependencies {
@@ -79,21 +79,20 @@ implementation 'ChatroomUIKit'
 
 ```
 ┌─ Example                               // Sample demo directory
-│  ├─ ChatroomListActivity               // Mainly providing room list Activity.
+│  ├─ ChatroomListActivity               // Mainly providing room list Activity
 │  ├─ ChatroomActivity                   // Displaying ChatroomUIKit chatroom Activity.
 │  ├─ compose                            // Sample demo.
 │  ├─ http                               // Encapsulated network requests for interaction with app services.
 │  └─ SplashActivity                     // Program launch page.
-├─ ChatroomService                       // ChatroomUIKit protocol module.
-│  ├─ model                              // The entity objects used by ChatroomUIKit (user, room information, and configuration information).
-│  ├─ service                            // The protocols and protocol implementations used by ChatroomUIKit (room protocol, user protocol, and gift protocol).
-│  │    └─ Protocol                        
-│  │         ├─ GiftService              // Gift sending and receiving channel.
-│  │         ├─ UserService              // Component for user login and user attribute update.
-│  │         └─ ChatroomService          // Component for implementing the protocol for chat room management, including joining and leaving the chat room and sending and receiving messages.
-│  └─ ChatroomUIKitClient                // ChatroomUIKit initialization class.
 └─ ChatroomUIKit            
        ├─ compose                        // UI Compose (Bottom toolbar, message list, gift list, and bottom drawer).
+       ├─ service                        // ChatroomUIKit protocol module.
+       │     ├─ model                    // The entity objects used by ChatroomUIKit (user, room information, and configuration information).
+       │     ├─ Protocol
+       │     │      ├─ GiftService       // Gift sending and receiving channel.
+       │     │      ├─ UserService       // Component for user login and user attribute update.
+       │     │      └─ ChatroomService   // Component for implementing the protocol for chat room management, including joining and leaving the chat room and sending and receiving messages.
+       │     └─ ChatroomUIKitClient      // ChatroomUIKit 初始化类。
        ├─ theme                          // Resource files providing properties such as colors, fonts, themes, gradients, and sizes required for the project.  
        ├─ viewModel                      // Data processing.
        ├─ widget                         // Input widget.

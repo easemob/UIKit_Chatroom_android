@@ -40,11 +40,13 @@
 
 # [安装](../document/ChatroomUIKit_zh.md#安装)
 
-你可以通过 build.gradle 导入 ChatroomUIKi 库，作为 app 项目的依赖。
+你可以通过 build.gradle 导入 ChatroomUIKi库，作为 app 项目的依赖。
+
+## [ChatroomUIKi仓库地址](https://github.com/easemob/UIKit_Chatroom_android)
 
 ## [本地模块依赖](../document/ChatroomUIKit_zh.md#本地模块依赖)
 
-找到 **ChatroomUIKit** 模块，将 [ChatroomUIKit](../ChatroomUIKit) 和 [ChatroomService](../ChatroomService) 模块导入到项目中。
+找到 **ChatroomUIKit** 模块，将 [ChatroomUIKit](../ChatroomUIKit)模块导入到项目中，或者使用package文件夹下的ease-chatroomui-kit.aar。
 
 1. 在 Android Studio 中打开你的项目。
 
@@ -55,9 +57,7 @@
 ```
 // settings.gradle
 include ':ChatroomUIKit'
-include ':ChatroomService'
 project(':ChatroomUIKit').projectDir = new File('../ChatroomUIKit/ChatroomUIKit')
-project(':ChatroomService').projectDir = new File('../ChatroomUIKit/ChatroomService')
 
 // app/build.gradle
 dependencies {
@@ -84,17 +84,16 @@ implementation 'ChatroomUIKit'
 │  ├─ compose                            // Demo。
 │  ├─ http                               // 封装的网络请求，用于与 app 服务进行交互。
 │  └─ SplashActivity                     // 程序启动页面。
-├─ ChatroomService                       // ChatroomUIKit 协议模块。
-│  ├─ model                              // ChatroomUIKit 使用的实体对象（用户、聊天室信息和配置信息）。
-│  ├─ service                            // ChatroomUIKit 使用的协议和协议实现（聊天室协议、用户协议和礼物协议）。
-│  │    └─ Protocol                        
-│  │         ├─ GiftService              // 礼物发送和接收频道。
-│  │         ├─ UserService              // 用于用户登录和用户属性更新的组件。
-│  │         └─ ChatroomService          // 用于实现聊天室管理协议的组件，包括加入和离开聊天室和发送和接收消息。
-│  └─ ChatroomUIKitClient                // ChatroomUIKit 初始化类。
 └─ ChatroomUIKit            
        ├─ compose                        // UI Compose （聊天室底部工具栏区域、消息列表、礼物列表和底部抽屉）
-       ├─ theme                          // 资源文件，提供项目所需的各种属性，例如颜色、字体、主题、渐变和大小。
+       ├─ service                        // ChatroomUIKit 协议模块。
+       │     ├─ model                    // ChatroomUIKit 使用的实体对象（用户、聊天室信息和配置信息）。
+       │     ├─ Protocol
+       │     │      ├─ GiftService       // 礼物发送和接收频道。
+       │     │      ├─ UserService       // 用于用户登录和用户属性更新的组件。
+       │     │      └─ ChatroomService   // 用于实现聊天室管理协议的组件，包括加入和离开聊天室和发送和接收消息。
+       │     └─ ChatroomUIKitClient      // ChatroomUIKit 初始化类。
+       ├─ theme                          //资源文件，提供项目所需的各种属性，例如颜色、字体、主题、渐变和大小。
        ├─ viewModel                      // 数据处理。
        ├─ widget                         // 输入组件。
        └─ ui                             // 搜索 Activity。

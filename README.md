@@ -24,11 +24,11 @@
   - Gradle 7.0.0 及以上版本。
 
 ## 集成 UIKit
-### 1. 克隆本仓库到本地
+### 1. 克隆[ChatroomUIKit](https://github.com/easemob/UIKit_Chatroom_android)到本地或者使用package文件夹下的ease-chatroomui-kit.aar
 ```shell
- git clone [本项目地址]
+ git clone [git@github.com:easemob/UIKit_Chatroom_android.git]
 ```
-### 2. 将 [ChatroomUIKit](./ChatroomUIKit) 和 [ChatroomService](./ChatroomService) 模块导入到项目中
+### 2. 将 [ChatroomUIKit](./ChatroomUIKit) 模块导入到项目中
 ```kotlin
 // settings.gradle
 include ':ChatroomUIKit'
@@ -77,7 +77,8 @@ class ChatroomApplication : Application() {
 
   override fun onCreate() {
     super.onCreate()
-
+    // ChatroomUIKitClient.getInstance().setUp() 可以在任意位置实现 
+    // 但需要保证在调用setUp()前尽量不去调用SDK相关API 防止未初始化SDK引起的NullPointerException异常
     ChatroomUIKitClient.getInstance().setUp(this, "Your AppKey")
 
   }
