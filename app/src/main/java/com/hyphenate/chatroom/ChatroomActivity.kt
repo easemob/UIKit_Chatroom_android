@@ -54,10 +54,13 @@ import com.hyphenate.chatroom.compose.defaultMembersViewModelFactory
 import com.hyphenate.chatroom.compose.dialog.SimpleDialog
 import com.hyphenate.chatroom.compose.broadcast.ComposeGlobalBroadcast
 import com.hyphenate.chatroom.compose.utils.WindowConfigUtils
-import com.hyphenate.chatroom.model.UIChatroomInfo
 import com.hyphenate.chatroom.service.ChatError
 import com.hyphenate.chatroom.service.ChatroomChangeListener
+import com.hyphenate.chatroom.service.ChatroomResultEvent
+import com.hyphenate.chatroom.service.ChatroomResultListener
+import com.hyphenate.chatroom.service.ChatroomUIKitClient
 import com.hyphenate.chatroom.service.UserEntity
+import com.hyphenate.chatroom.service.model.UIChatroomInfo
 import com.hyphenate.chatroom.service.transfer
 import com.hyphenate.chatroom.theme.ChatroomUIKitTheme
 import com.hyphenate.chatroom.ui.UISearchActivity

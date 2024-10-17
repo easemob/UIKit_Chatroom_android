@@ -1,4 +1,4 @@
-package com.hyphenate.chatroom.model
+package com.hyphenate.chatroom.service.model
 
 import java.io.Serializable
 

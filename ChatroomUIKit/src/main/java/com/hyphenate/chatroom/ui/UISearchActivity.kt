@@ -36,7 +36,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.hyphenate.chatroom.ChatroomUIKitClient
 import com.hyphenate.chatroom.UIChatroomService
 import com.hyphenate.chatroom.compose.dialog.SimpleDialog
 import com.hyphenate.chatroom.compose.drawer.ComposeMenuBottomSheet
@@ -45,6 +44,7 @@ import com.hyphenate.chatroom.compose.participant.MembersPage
 import com.hyphenate.chatroom.compose.participant.MutedListPage
 import com.hyphenate.chatroom.compose.utils.WindowConfigUtils
 import com.hyphenate.chatroom.service.ChatLog
+import com.hyphenate.chatroom.service.ChatroomUIKitClient
 import com.hyphenate.chatroom.theme.ChatroomUIKitTheme
 import com.hyphenate.chatroom.uikit.R
 import com.hyphenate.chatroom.viewmodel.dialog.DialogViewModel

@@ -1,4 +1,4 @@
-package com.hyphenate.chatroom.utils
+package com.hyphenate.chatroom.service.utils
 
 import com.google.gson.*
 import com.google.gson.reflect.TypeToken

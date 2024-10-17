@@ -4,15 +4,16 @@ import android.app.Application
 import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
-import com.hyphenate.chatroom.ChatroomUIKitClient
 import com.hyphenate.chatroom.bean.LoginRes
 import com.hyphenate.chatroom.http.ChatroomHttpManager
 import com.hyphenate.chatroom.http.LoginReq
 import com.hyphenate.chatroom.http.toLoginReq
-import com.hyphenate.chatroom.model.UserInfoProtocol
 import com.hyphenate.chatroom.service.ChatError
+import com.hyphenate.chatroom.service.ChatroomUIKitClient
 import com.hyphenate.chatroom.service.OnError
+import com.hyphenate.chatroom.service.OnSuccess
 import com.hyphenate.chatroom.service.OnValueSuccess
+import com.hyphenate.chatroom.service.model.UserInfoProtocol
 import com.hyphenate.chatroom.utils.SPUtils
 import com.hyphenate.chatroom.utils.UserInfoGenerator
 import retrofit2.Call
@@ -23,6 +24,49 @@ class SplashViewModel(
     private val context: Application
 ):ViewModel() {
     private val _loading = mutableStateOf(true)
+
+    fun login(username:String,token:String,onSuccess: OnSuccess = {}, onError: OnError = { _, _ -> }){
+        _loading.value = true
+        val userInfoProtocol = UserInfoProtocol(
+            username,
+            UserInfoGenerator.randomNickname(context),
+            UserInfoGenerator.randomAvatarUrl(context)
+        )
+        ChatroomUIKitClient.getInstance().login(
+            userInfoProtocol,
+            token,
+            onSuccess = {
+                ChatroomUIKitClient.getInstance().updateUserInfo(
+                    userInfoProtocol,
+                    onSuccess = {
+                        Log.e("SplashViewModel","updateUserInfo onSuccess")
+                    },
+                    onError = { error,code->
+                        Log.e("SplashViewModel","updateUserInfo onError $error $code")
+                    }
+                )
+                onSuccess.invoke()
+            },
+            onError= { code, msg ->
+                if (code == ChatError.USER_ALREADY_LOGIN) {
+                    ChatroomUIKitClient.getInstance().logout(onSuccess = {
+                        ChatroomUIKitClient.getInstance().login(
+                            userInfoProtocol,
+                            token,
+                            onSuccess = {
+                                onSuccess.invoke()
+                            }, onError = {code, error ->
+                                onError.invoke(code, error)
+                            })
+                    }, onError = { code, error ->
+                        onError.invoke(code, error)
+                    })
+                }else {
+                    onError.invoke(code, msg)
+                }
+                Log.e("SplashViewModel", "onError: $code $msg")
+            })
+    }
 
     fun login(onValueSuccess: OnValueSuccess<LoginRes> = {}, onError: OnError = { _, _ -> }) {
         _loading.value = true

@@ -32,11 +32,11 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
-import com.hyphenate.chatroom.ChatroomUIKitClient
 import com.hyphenate.chatroom.compose.avatar.ImageAvatar
 import com.hyphenate.chatroom.compose.utils.ExpressionUtils
 import com.hyphenate.chatroom.model.emoji.UIRegexEntity
 import com.hyphenate.chatroom.service.ChatTextMessageBody
+import com.hyphenate.chatroom.service.ChatroomUIKitClient
 import com.hyphenate.chatroom.service.GiftEntityProtocol
 import com.hyphenate.chatroom.service.UserEntity
 import com.hyphenate.chatroom.theme.ChatroomUIKitTheme

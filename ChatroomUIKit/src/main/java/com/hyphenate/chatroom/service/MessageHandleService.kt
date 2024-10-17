@@ -16,7 +16,8 @@ interface MessageHandleService {
     fun sendTextMessage(message: String,
                         roomId: String = "",
                         onSuccess: (ChatMessage) -> Unit,
-                        onError: OnError)
+                        onError: OnError
+    )
 
     /**
      * Send a target text message to the chatroom.
@@ -30,7 +31,8 @@ interface MessageHandleService {
                               message: String,
                               roomId: String = "",
                               onSuccess: OnValueSuccess<ChatMessage>,
-                              onError: OnError)
+                              onError: OnError
+    )
 
     /**
      * Send a custom message to the chatroom.
@@ -45,7 +47,8 @@ interface MessageHandleService {
                                 ext: Map<String, String>,
                                 roomId: String = "",
                                 onSuccess: (ChatMessage) -> Unit,
-                                onError: OnError)
+                                onError: OnError
+    )
 
     /**
      * Send a message to the chatroom.
@@ -67,7 +70,8 @@ interface MessageHandleService {
      */
     fun translateTextMessage(message: ChatMessage?,
                              onSuccess: OnValueSuccess<ChatMessage>,
-                             onError: OnError)
+                             onError: OnError
+    )
 
     /**
      * Delete a message from chat server.
@@ -76,8 +80,9 @@ interface MessageHandleService {
      * @param onError The callback to indicate the message is failed to delete.
      */
     fun recallMessage(message: ChatMessage?,
-                             onSuccess: OnSuccess,
-                             onError: OnError)
+                      onSuccess: OnSuccess,
+                      onError: OnError
+    )
 
     /**
      * Reports an inappropriate message.
@@ -91,7 +96,8 @@ interface MessageHandleService {
                       tag: String,
                       reason: String,
                       onSuccess: OnSuccess,
-                      onError: OnError)
+                      onError: OnError
+    )
 }
 
 interface GiftMessageHandleService {
@@ -120,5 +126,5 @@ interface MessageListener {
 }
 
 interface GiftReceiveListener {
-    fun onGiftReceived(roomId:String,gift: GiftEntityProtocol?,message: ChatMessage){}
+    fun onGiftReceived(roomId:String, gift: GiftEntityProtocol?, message: ChatMessage){}
 }

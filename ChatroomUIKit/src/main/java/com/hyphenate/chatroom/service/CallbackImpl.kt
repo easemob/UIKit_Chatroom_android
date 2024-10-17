@@ -1,8 +1,5 @@
 package com.hyphenate.chatroom.service
 
-import com.hyphenate.chatroom.ChatroomResultEvent
-import com.hyphenate.chatroom.ChatroomUIKitClient
-
 
 typealias OnSuccess = () -> Unit
 typealias OnValueSuccess<T> = (value: T) -> Unit

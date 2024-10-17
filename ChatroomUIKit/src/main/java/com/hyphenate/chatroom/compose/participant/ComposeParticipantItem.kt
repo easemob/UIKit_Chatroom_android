@@ -28,13 +28,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.hyphenate.chatroom.ChatroomUIKitClient
 import com.hyphenate.chatroom.UIChatroomService
 import com.hyphenate.chatroom.compose.avatar.Avatar
 import com.hyphenate.chatroom.compose.image.AsyncImage
-import com.hyphenate.chatroom.model.UIChatroomInfo
 import com.hyphenate.chatroom.service.ChatClient
+import com.hyphenate.chatroom.service.ChatroomUIKitClient
 import com.hyphenate.chatroom.service.UserEntity
+import com.hyphenate.chatroom.service.model.UIChatroomInfo
 import com.hyphenate.chatroom.theme.ChatroomUIKitTheme
 import com.hyphenate.chatroom.uikit.R
 import com.hyphenate.chatroom.viewmodel.member.MemberListViewModel

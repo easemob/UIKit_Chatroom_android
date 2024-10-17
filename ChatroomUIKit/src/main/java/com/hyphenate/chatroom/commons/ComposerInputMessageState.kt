@@ -1,6 +1,7 @@
 package com.hyphenate.chatroom.commons
 
-import com.hyphenate.chatroom.model.UserInfoProtocol
+import com.hyphenate.chatroom.service.model.UserInfoProtocol
+
 
 /**
  * Represents the state within the message input.

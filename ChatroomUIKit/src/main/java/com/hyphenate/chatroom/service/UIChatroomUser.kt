@@ -1,6 +1,5 @@
-package com.hyphenate.chatroom
+package com.hyphenate.chatroom.service
 
-import com.hyphenate.chatroom.service.UserEntity
 
 class UIChatroomUser {
 

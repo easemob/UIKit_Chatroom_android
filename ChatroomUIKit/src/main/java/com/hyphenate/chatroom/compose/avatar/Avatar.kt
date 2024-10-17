@@ -19,7 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImagePainter
 import com.hyphenate.chatroom.compose.utils.rememberStreamImagePainter
-import com.hyphenate.chatroom.model.UserInfoProtocol
+import com.hyphenate.chatroom.service.model.UserInfoProtocol
 import com.hyphenate.chatroom.theme.ChatroomUIKitTheme
 import com.hyphenate.chatroom.uikit.R
 

@@ -1,7 +1,7 @@
-package com.hyphenate.chatroom
+package com.hyphenate.chatroom.service
 
 import android.content.Context
-import com.hyphenate.chatroom.model.UIChatroomInfo
+import com.hyphenate.chatroom.service.model.UIChatroomInfo
 
 class UIChatroomContext{
     private lateinit var mChatroomInfo: UIChatroomInfo

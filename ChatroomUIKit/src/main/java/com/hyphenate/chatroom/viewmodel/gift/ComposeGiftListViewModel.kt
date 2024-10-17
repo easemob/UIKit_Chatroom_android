@@ -1,10 +1,10 @@
 package com.hyphenate.chatroom.viewmodel.gift
 
-import com.hyphenate.chatroom.ChatroomUIKitClient
 import com.hyphenate.chatroom.UIChatroomService
 import com.hyphenate.chatroom.compose.gift.ComposeGiftItemState
 import com.hyphenate.chatroom.compose.gift.ComposeGiftListItemState
 import com.hyphenate.chatroom.service.ChatMessage
+import com.hyphenate.chatroom.service.ChatroomUIKitClient
 import com.hyphenate.chatroom.service.GiftEntityProtocol
 import com.hyphenate.chatroom.service.GiftReceiveListener
 import com.hyphenate.chatroom.viewmodel.ComposeBaseListViewModel

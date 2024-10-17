@@ -1,10 +1,10 @@
 package com.hyphenate.chatroom.viewmodel.member
 
 import com.hyphenate.chatroom.UIChatroomService
+import com.hyphenate.chatroom.service.ChatroomUIKitClient
 import com.hyphenate.chatroom.service.OnError
 import com.hyphenate.chatroom.service.OnValueSuccess
 import com.hyphenate.chatroom.service.UserEntity
-import com.hyphenate.chatroom.ChatroomUIKitClient
 
 data class MutedListViewModel(
     private val roomId: String,

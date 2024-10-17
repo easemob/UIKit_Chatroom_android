@@ -3,9 +3,9 @@ package com.hyphenate.chatroom.viewmodel
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
-import com.hyphenate.chatroom.ChatroomUIKitClient
 import com.hyphenate.chatroom.UIChatroomService
 import com.hyphenate.chatroom.service.ChatroomChangeListener
+import com.hyphenate.chatroom.service.ChatroomUIKitClient
 
 open class UIRoomViewModel(
     private val service: UIChatroomService,

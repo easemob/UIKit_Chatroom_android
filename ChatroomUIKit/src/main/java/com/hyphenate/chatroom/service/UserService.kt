@@ -1,6 +1,6 @@
 package com.hyphenate.chatroom.service
 
-import com.hyphenate.chatroom.model.UserInfoProtocol
+import com.hyphenate.chatroom.service.model.UserInfoProtocol
 
 
 interface UserService {

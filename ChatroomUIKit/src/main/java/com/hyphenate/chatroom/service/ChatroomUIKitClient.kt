@@ -1,42 +1,17 @@
-package com.hyphenate.chatroom
+package com.hyphenate.chatroom.service
 
 import android.content.Context
 import android.text.TextUtils
 import android.util.Log
 import com.hyphenate.chat.EMMessage
-import com.hyphenate.chatroom.model.UIChatroomInfo
-import com.hyphenate.chatroom.model.UIConstant
-import com.hyphenate.chatroom.model.UserInfoProtocol
-import com.hyphenate.chatroom.model.toUser
-import com.hyphenate.chatroom.service.CallbackImpl
-import com.hyphenate.chatroom.service.ChatClient
-import com.hyphenate.chatroom.service.ChatConnectionListener
-import com.hyphenate.chatroom.service.ChatCustomMessageBody
-import com.hyphenate.chatroom.service.ChatError
-import com.hyphenate.chatroom.service.ChatException
-import com.hyphenate.chatroom.service.ChatLog
-import com.hyphenate.chatroom.service.ChatMessage
-import com.hyphenate.chatroom.service.ChatMessageListener
-import com.hyphenate.chatroom.service.ChatMessageType
-import com.hyphenate.chatroom.service.ChatOptions
-import com.hyphenate.chatroom.service.ChatRoomChangeListener
-import com.hyphenate.chatroom.service.ChatType
-import com.hyphenate.chatroom.service.Chatroom
-import com.hyphenate.chatroom.service.ChatroomChangeListener
-import com.hyphenate.chatroom.service.ChatroomService
-import com.hyphenate.chatroom.service.GiftEntityProtocol
-import com.hyphenate.chatroom.service.GiftReceiveListener
-import com.hyphenate.chatroom.service.OnError
-import com.hyphenate.chatroom.service.OnSuccess
-import com.hyphenate.chatroom.service.OnValueSuccess
-import com.hyphenate.chatroom.service.UserEntity
-import com.hyphenate.chatroom.service.UserService
-import com.hyphenate.chatroom.service.UserStateChangeListener
 import com.hyphenate.chatroom.service.cache.UIChatroomCacheManager
+import com.hyphenate.chatroom.service.model.UIChatroomInfo
+import com.hyphenate.chatroom.service.model.UIConstant
+import com.hyphenate.chatroom.service.model.UserInfoProtocol
+import com.hyphenate.chatroom.service.model.toUser
 import com.hyphenate.chatroom.service.serviceImpl.ChatroomServiceImpl
 import com.hyphenate.chatroom.service.serviceImpl.UserServiceImpl
-import com.hyphenate.chatroom.service.transfer
-import com.hyphenate.chatroom.utils.GsonTools
+import com.hyphenate.chatroom.service.utils.GsonTools
 import org.json.JSONObject
 
 class ChatroomUIKitClient {
@@ -153,7 +128,7 @@ class ChatroomUIKitClient {
     /**
      * Init the chatroom before joining it
      */
-    private fun initRoom(roomInfo:UIChatroomInfo){
+    private fun initRoom(roomInfo: UIChatroomInfo){
         Log.e(TAG, "initRoom owner: ${roomInfo.roomOwner}")
         currentRoomContext.setCurrentRoomInfo(roomInfo)
         registerMessageListener()

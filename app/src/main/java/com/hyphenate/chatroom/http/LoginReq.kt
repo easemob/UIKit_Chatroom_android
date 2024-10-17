@@ -1,7 +1,7 @@
 package com.hyphenate.chatroom.http
 
 import com.google.gson.Gson
-import com.hyphenate.chatroom.model.UserInfoProtocol
+import com.hyphenate.chatroom.service.model.UserInfoProtocol
 
 data class LoginReq(
     val username: String,

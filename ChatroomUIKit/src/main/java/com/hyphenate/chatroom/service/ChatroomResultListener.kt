@@ -1,4 +1,4 @@
-package com.hyphenate.chatroom
+package com.hyphenate.chatroom.service
 
 /**
  * These events are used for callbacks after the user interacts with the Chat SDK interface.
@@ -80,5 +80,5 @@ interface ChatroomResultListener {
      * @param errorCode The error code of the user's interaction with the chat SDK interface.
      * @param errorMessage The error message of the user's interaction with the chat SDK interface.
      */
-    fun onEventResult(event: com.hyphenate.chatroom.ChatroomResultEvent, errorCode: Int, errorMessage: String?)
+    fun onEventResult(event: ChatroomResultEvent, errorCode: Int, errorMessage: String?)
 }

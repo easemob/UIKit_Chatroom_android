@@ -30,9 +30,9 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.hyphenate.chatroom.ChatroomUIKitClient
 import com.hyphenate.chatroom.compose.avatar.ImageAvatar
 import com.hyphenate.chatroom.compose.utils.rememberStreamImagePainter
+import com.hyphenate.chatroom.service.ChatroomUIKitClient
 import com.hyphenate.chatroom.theme.ChatroomUIKitTheme
 import com.hyphenate.chatroom.uikit.R
 import com.hyphenate.chatroom.viewmodel.gift.ComposeGiftListViewModel

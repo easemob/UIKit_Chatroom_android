@@ -51,6 +51,14 @@ class SplashActivity: ComponentActivity() {
                 }, onError = { code, msg ->
                     dialogViewModel.showDialog()
                 })
+//                viewModel.login(
+//                    username = "",
+//                    token = "",
+//                    onSuccess = { skipToMain() },
+//                    onError = { code, msg ->
+//                        dialogViewModel.showDialog()
+//                    }
+//                )
                 Image(
                     modifier = Modifier
                         .fillMaxSize(),

@@ -3,10 +3,10 @@ package com.hyphenate.chatroom.commons
 import android.content.Context
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
-import com.hyphenate.chatroom.model.UserInfoProtocol
 import com.hyphenate.chatroom.service.ChatroomService
 import com.hyphenate.chatroom.compose.utils.DispatcherProvider
 import com.hyphenate.chatroom.compose.utils.SmileUtils
+import com.hyphenate.chatroom.service.model.UserInfoProtocol
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.MutableStateFlow

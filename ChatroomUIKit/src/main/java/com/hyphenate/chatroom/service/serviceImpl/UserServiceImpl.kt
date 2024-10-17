@@ -1,18 +1,19 @@
 package com.hyphenate.chatroom.service.serviceImpl
 
-import com.hyphenate.chatroom.ChatroomUIKitClient
-import com.hyphenate.chatroom.model.UserInfoProtocol
-import com.hyphenate.chatroom.model.toUser
-import com.hyphenate.chatroom.model.transfer
+import android.util.Log
 import com.hyphenate.chatroom.service.CallbackImpl
 import com.hyphenate.chatroom.service.ChatClient
 import com.hyphenate.chatroom.service.ChatUserInfo
 import com.hyphenate.chatroom.service.ChatValueCallback
+import com.hyphenate.chatroom.service.ChatroomUIKitClient
 import com.hyphenate.chatroom.service.OnError
 import com.hyphenate.chatroom.service.OnSuccess
 import com.hyphenate.chatroom.service.OnValueSuccess
 import com.hyphenate.chatroom.service.UserService
 import com.hyphenate.chatroom.service.UserStateChangeListener
+import com.hyphenate.chatroom.service.model.UserInfoProtocol
+import com.hyphenate.chatroom.service.model.toUser
+import com.hyphenate.chatroom.service.model.transfer
 import com.hyphenate.chatroom.service.transfer
 
 

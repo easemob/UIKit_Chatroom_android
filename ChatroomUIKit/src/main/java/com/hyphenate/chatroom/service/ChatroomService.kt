@@ -58,9 +58,10 @@ interface ChatroomService: MessageHandleService {
      * @param onError The callback to indicate the user failed to join the chatroom.
      */
     fun joinChatroom(roomId: String,
-                    userId: String,
-                    onSuccess: OnValueSuccess<Chatroom>,
-                    onError: OnError)
+                     userId: String,
+                     onSuccess: OnValueSuccess<Chatroom>,
+                     onError: OnError
+    )
 
     /**
      * Leave a chatroom.
@@ -69,15 +70,17 @@ interface ChatroomService: MessageHandleService {
     fun leaveChatroom(roomId: String,
                       userId: String,
                       onSuccess: OnSuccess,
-                      onError: OnError)
+                      onError: OnError
+    )
 
     /**
      * destroy a chatroom.
      * @param roomId The id of the chatroom
      */
     fun destroyChatroom(roomId: String,
-                      onSuccess: OnSuccess,
-                      onError: OnError)
+                        onSuccess: OnSuccess,
+                        onError: OnError
+    )
 
     /**
      * Fetch the members of the chatroom from server.
@@ -92,7 +95,8 @@ interface ChatroomService: MessageHandleService {
                      cursor: String?,
                      pageSize: Int,
                      onSuccess: OnValueSuccess<ChatCursorResult<String>>,
-                     onError: OnError)
+                     onError: OnError
+    )
 
 
     /**
@@ -107,7 +111,8 @@ interface ChatroomService: MessageHandleService {
                       pageNum: Int,
                       pageSize: Int,
                       onSuccess: OnValueSuccess<Map<String, Long>>,
-                      onError: OnError)
+                      onError: OnError
+    )
 
     /**
      * Get the announcement of the chatroom.
@@ -116,8 +121,9 @@ interface ChatroomService: MessageHandleService {
      * @param onError The callback to indicate the error.
      */
     fun getAnnouncement(roomId: String,
-                       onSuccess: OnValueSuccess<String?>,
-                       onError: OnError)
+                        onSuccess: OnValueSuccess<String?>,
+                        onError: OnError
+    )
 
     /**
      * Update the announcement of the chatroom.
@@ -129,7 +135,8 @@ interface ChatroomService: MessageHandleService {
     fun updateAnnouncement(roomId: String,
                            announcement: String,
                            onSuccess: OnSuccess,
-                           onError: OnError)
+                           onError: OnError
+    )
 
     /**
      * Operate a user in the chatroom.
@@ -143,7 +150,8 @@ interface ChatroomService: MessageHandleService {
                     userId: String,
                     operation: UserOperationType,
                     onSuccess: OnValueSuccess<Chatroom>,
-                    onError: OnError)
+                    onError: OnError
+    )
 }
 
 interface ChatroomChangeListener: MessageListener {

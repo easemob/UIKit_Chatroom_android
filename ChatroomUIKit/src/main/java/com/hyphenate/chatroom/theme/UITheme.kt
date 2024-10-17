@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.compositionLocalOf
-import com.hyphenate.chatroom.ChatroomUIKitClient
+import com.hyphenate.chatroom.service.ChatroomUIKitClient
 
 private val LocalDimens = compositionLocalOf<UIDimens> {
     error("No dimens provided! Make sure to wrap all usages of Chatroom components in a ChatroomUIKitTheme.")

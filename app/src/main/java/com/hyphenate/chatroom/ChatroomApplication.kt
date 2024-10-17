@@ -3,6 +3,10 @@ package com.hyphenate.chatroom
 import android.app.Application
 import com.hyphenate.chatroom.commons.GlobalConfig
 import com.hyphenate.chatroom.data.LanguageType
+import com.hyphenate.chatroom.service.ChatSDKOptions
+import com.hyphenate.chatroom.service.ChatroomUIKitClient
+import com.hyphenate.chatroom.service.ChatroomUIKitOptions
+import com.hyphenate.chatroom.service.UiOptions
 import java.util.Locale
 
 class ChatroomApplication : Application() {

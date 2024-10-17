@@ -2,14 +2,14 @@ package com.hyphenate.chatroom.viewmodel.member
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
-import com.hyphenate.chatroom.ChatroomUIKitClient
 import com.hyphenate.chatroom.UIChatroomService
-import com.hyphenate.chatroom.model.toUser
 import com.hyphenate.chatroom.service.ChatLog
+import com.hyphenate.chatroom.service.ChatroomUIKitClient
 import com.hyphenate.chatroom.service.OnError
 import com.hyphenate.chatroom.service.OnValueSuccess
 import com.hyphenate.chatroom.service.UserEntity
 import com.hyphenate.chatroom.service.UserOperationType
+import com.hyphenate.chatroom.service.model.toUser
 import com.hyphenate.chatroom.viewmodel.RequestListViewModel
 
 open class MemberListViewModel(

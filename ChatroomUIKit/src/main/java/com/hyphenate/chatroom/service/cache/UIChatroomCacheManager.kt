@@ -9,8 +9,8 @@ import java.io.ByteArrayOutputStream
 import java.io.ObjectOutputStream
 import java.io.Serializable
 import android.util.Base64
-import com.hyphenate.chatroom.model.UIConstant
 import com.hyphenate.chatroom.service.UserEntity
+import com.hyphenate.chatroom.service.model.UIConstant
 import java.io.ByteArrayInputStream
 import java.io.IOException
 import java.io.ObjectInputStream

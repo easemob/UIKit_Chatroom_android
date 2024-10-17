@@ -2,8 +2,8 @@ package com.hyphenate.chatroom.viewmodel.menu
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.hyphenate.chatroom.ChatroomUIKitClient
 import com.hyphenate.chatroom.model.UIComposeSheetItem
+import com.hyphenate.chatroom.service.ChatroomUIKitClient
 
 class MenuViewModelFactory(
     private val isDarkTheme: Boolean? = ChatroomUIKitClient.getInstance().getCurrentTheme(),

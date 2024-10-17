@@ -1,4 +1,4 @@
-package com.hyphenate.chatroom
+package com.hyphenate.chatroom.service
 
 data class ChatroomUIKitOptions(
     var chatOptions: ChatSDKOptions = ChatSDKOptions(),

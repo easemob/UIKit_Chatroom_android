@@ -3,7 +3,6 @@ package com.hyphenate.chatroom.viewmodel.messages
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.hyphenate.chatroom.ChatroomUIKitClient
 import com.hyphenate.chatroom.UIChatroomService
 import com.hyphenate.chatroom.commons.ComposeChatListController
 import com.hyphenate.chatroom.commons.ComposeMessageListState
@@ -12,6 +11,7 @@ import com.hyphenate.chatroom.compose.utils.parsingGift
 import com.hyphenate.chatroom.model.UICapabilities
 import com.hyphenate.chatroom.model.UIChatBarMenuItem
 import com.hyphenate.chatroom.model.gift.AUIGiftTabInfo
+import com.hyphenate.chatroom.service.ChatroomUIKitClient
 import com.hyphenate.chatroom.uikit.R
 import com.hyphenate.chatroom.viewmodel.UIRoomViewModel
 import com.hyphenate.chatroom.viewmodel.gift.ComposeGiftListViewModel

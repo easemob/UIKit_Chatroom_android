@@ -2,13 +2,13 @@ package com.hyphenate.chatroom.viewmodel.messages
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.hyphenate.chatroom.ChatroomUIKitClient
 import com.hyphenate.chatroom.UIChatroomService
 import com.hyphenate.chatroom.commons.ComposeChatListController
 import com.hyphenate.chatroom.commons.ComposeMessageListState
 import com.hyphenate.chatroom.service.ChatMessage
 import com.hyphenate.chatroom.compose.messagelist.ComposeMessageListItemState
 import com.hyphenate.chatroom.service.ChatroomChangeListener
+import com.hyphenate.chatroom.service.ChatroomUIKitClient
 import com.hyphenate.chatroom.service.GiftEntityProtocol
 import com.hyphenate.chatroom.service.GiftReceiveListener
 import com.hyphenate.chatroom.service.OnError

@@ -1,9 +1,9 @@
 package com.hyphenate.chatroom.viewmodel.menu
 
 import android.content.Context
-import com.hyphenate.chatroom.ChatroomUIKitClient
 import com.hyphenate.chatroom.model.UIComposeSheetItem
 import com.hyphenate.chatroom.service.ChatMessage
+import com.hyphenate.chatroom.service.ChatroomUIKitClient
 import com.hyphenate.chatroom.service.UserEntity
 import com.hyphenate.chatroom.uikit.R
 
@@ -56,7 +56,7 @@ class MessageMenuViewModel(
                 if(bean.from == ChatroomUIKitClient.getInstance().getCurrentUser().userId){
                     messageMenuList.add(UIComposeSheetItem(id = R.id.action_menu_recall, title =  context.getString(R.string.menu_item_recall)))
                 }
-                if (ChatroomUIKitClient.getInstance().isCurrentRoomOwner() && bean.from != com.hyphenate.chatroom.ChatroomUIKitClient.getInstance().getCurrentUser().userId ){
+                if (ChatroomUIKitClient.getInstance().isCurrentRoomOwner() && bean.from != ChatroomUIKitClient.getInstance().getCurrentUser().userId ){
                     messageMenuList.add(UIComposeSheetItem(id = R.id.action_menu_unmute, title =  context.getString(R.string.menu_item_unmute)))
                 }
                 messageMenuList.add(UIComposeSheetItem(id = R.id.action_menu_report, title =  context.getString(R.string.menu_item_report), isError = true))
@@ -65,7 +65,7 @@ class MessageMenuViewModel(
                 if(bean.from == ChatroomUIKitClient.getInstance().getCurrentUser().userId){
                     messageMenuList.add(UIComposeSheetItem(id = R.id.action_menu_recall, title =  context.getString(R.string.menu_item_recall)))
                 }
-                if (ChatroomUIKitClient.getInstance().isCurrentRoomOwner() && bean.from != com.hyphenate.chatroom.ChatroomUIKitClient.getInstance().getCurrentUser().userId ){
+                if (ChatroomUIKitClient.getInstance().isCurrentRoomOwner() && bean.from != ChatroomUIKitClient.getInstance().getCurrentUser().userId ){
                     messageMenuList.add(UIComposeSheetItem(id = R.id.action_menu_mute, title =  context.getString(R.string.menu_item_mute)))
                 }
                 messageMenuList.add(UIComposeSheetItem(id = R.id.action_menu_report, title =  context.getString(R.string.menu_item_report), isError = true))

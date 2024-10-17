@@ -2,8 +2,8 @@ package com.hyphenate.chatroom.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.hyphenate.chatroom.ChatroomUIKitClient
 import com.hyphenate.chatroom.UIChatroomService
+import com.hyphenate.chatroom.service.ChatroomUIKitClient
 
 class ChatroomFactory(
     private val service: UIChatroomService,

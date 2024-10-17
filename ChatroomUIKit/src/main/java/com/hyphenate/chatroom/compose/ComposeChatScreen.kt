@@ -25,7 +25,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.hyphenate.chatroom.ChatroomUIKitClient
 import com.hyphenate.chatroom.UIChatroomService
 import com.hyphenate.chatroom.compose.bottomtoolbar.ComposeBottomToolbar
 import com.hyphenate.chatroom.compose.messagelist.ComposeChatMessageList
@@ -37,13 +36,14 @@ import com.hyphenate.chatroom.compose.gift.ComposeGiftItemState
 import com.hyphenate.chatroom.compose.gift.ComposeGiftMessageList
 import com.hyphenate.chatroom.compose.participant.ComposeMembersBottomSheet
 import com.hyphenate.chatroom.compose.report.ComposeMessageReport
-import com.hyphenate.chatroom.model.UIChatroomInfo
 import com.hyphenate.chatroom.model.UIComposeSheetItem
-import com.hyphenate.chatroom.model.UserInfoProtocol
-import com.hyphenate.chatroom.model.toUser
 import com.hyphenate.chatroom.service.ChatLog
 import com.hyphenate.chatroom.service.ChatMessage
+import com.hyphenate.chatroom.service.ChatroomUIKitClient
 import com.hyphenate.chatroom.service.GiftEntityProtocol
+import com.hyphenate.chatroom.service.model.UIChatroomInfo
+import com.hyphenate.chatroom.service.model.UserInfoProtocol
+import com.hyphenate.chatroom.service.model.toUser
 import com.hyphenate.chatroom.service.transfer
 import com.hyphenate.chatroom.theme.ChatroomUIKitTheme
 import com.hyphenate.chatroom.uikit.R

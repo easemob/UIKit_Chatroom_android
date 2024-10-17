@@ -1,12 +1,12 @@
 package com.hyphenate.chatroom.viewmodel
 
-import com.hyphenate.chatroom.ChatroomUIKitClient
 import com.hyphenate.chatroom.UIChatroomService
 import com.hyphenate.chatroom.http.ChatroomHttpManager
 import com.hyphenate.chatroom.service.OnError
 import com.hyphenate.chatroom.service.OnSuccess
 import com.hyphenate.chatroom.bean.RoomDetailBean
 import com.hyphenate.chatroom.service.ChatLog
+import com.hyphenate.chatroom.service.ChatroomUIKitClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

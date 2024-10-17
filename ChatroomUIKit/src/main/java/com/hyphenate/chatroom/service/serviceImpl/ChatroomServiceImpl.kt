@@ -1,8 +1,5 @@
 package com.hyphenate.chatroom.service.serviceImpl
 
-import com.hyphenate.chatroom.ChatroomResultEvent
-import com.hyphenate.chatroom.ChatroomUIKitClient
-import com.hyphenate.chatroom.model.UIConstant
 import com.hyphenate.chatroom.service.CallbackImpl
 import com.hyphenate.chatroom.service.ChatCallback
 import com.hyphenate.chatroom.service.ChatClient
@@ -14,13 +11,16 @@ import com.hyphenate.chatroom.service.ChatMessageType
 import com.hyphenate.chatroom.service.ChatType
 import com.hyphenate.chatroom.service.Chatroom
 import com.hyphenate.chatroom.service.ChatroomChangeListener
+import com.hyphenate.chatroom.service.ChatroomResultEvent
 import com.hyphenate.chatroom.service.ChatroomService
+import com.hyphenate.chatroom.service.ChatroomUIKitClient
 import com.hyphenate.chatroom.service.OnError
 import com.hyphenate.chatroom.service.OnSuccess
 import com.hyphenate.chatroom.service.OnValueSuccess
 import com.hyphenate.chatroom.service.UserOperationType
 import com.hyphenate.chatroom.service.ValueCallbackImpl
-import com.hyphenate.chatroom.utils.GsonTools
+import com.hyphenate.chatroom.service.model.UIConstant
+import com.hyphenate.chatroom.service.utils.GsonTools
 import org.json.JSONObject
 
 class ChatroomServiceImpl: ChatroomService {
@@ -75,7 +75,9 @@ class ChatroomServiceImpl: ChatroomService {
         onSuccess: OnSuccess,
         onError: OnError
     ) {
-        chatroomManager.asyncDestroyChatRoom(roomId,CallbackImpl(onSuccess, onError, event = ChatroomResultEvent.DESTROY_ROOM))
+        chatroomManager.asyncDestroyChatRoom(roomId,
+            CallbackImpl(onSuccess, onError, event = ChatroomResultEvent.DESTROY_ROOM)
+        )
     }
 
     override fun fetchMembers(
@@ -262,7 +264,8 @@ class ChatroomServiceImpl: ChatroomService {
     ) {
         chatManager.translateMessage(message,
             ChatroomUIKitClient.getInstance().getTranslationLanguage(),
-            ValueCallbackImpl<ChatMessage>(onSuccess, onError, event = ChatroomResultEvent.TRANSLATE))
+            ValueCallbackImpl<ChatMessage>(onSuccess, onError, event = ChatroomResultEvent.TRANSLATE)
+        )
     }
 
     override fun recallMessage(message: ChatMessage?, onSuccess: OnSuccess, onError: OnError) {
@@ -281,6 +284,7 @@ class ChatroomServiceImpl: ChatroomService {
             return
         }
         chatManager.asyncReportMessage(messageId, tag, reason,
-            CallbackImpl(onSuccess, onError, event = ChatroomResultEvent.REPORT))
+            CallbackImpl(onSuccess, onError, event = ChatroomResultEvent.REPORT)
+        )
     }
 }

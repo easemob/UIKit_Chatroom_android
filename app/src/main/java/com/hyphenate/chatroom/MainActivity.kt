@@ -48,8 +48,9 @@ import com.hyphenate.chatroom.compose.avatar.Avatar
 import com.hyphenate.chatroom.compose.indicator.LoadingIndicator
 import com.hyphenate.chatroom.compose.switch
 import com.hyphenate.chatroom.compose.utils.WindowConfigUtils
-import com.hyphenate.chatroom.model.UserInfoProtocol
 import com.hyphenate.chatroom.service.ChatLog
+import com.hyphenate.chatroom.service.ChatroomUIKitClient
+import com.hyphenate.chatroom.service.model.UserInfoProtocol
 import com.hyphenate.chatroom.theme.ChatroomUIKitTheme
 import com.hyphenate.chatroom.utils.SPUtils
 import com.hyphenate.chatroom.viewmodel.ChatroomListViewModel

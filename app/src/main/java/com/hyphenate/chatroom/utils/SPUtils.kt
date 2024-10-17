@@ -6,7 +6,7 @@ import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.hyphenate.chatroom.http.LoginReq
 import com.hyphenate.chatroom.http.toJson
-import com.hyphenate.chatroom.model.UserInfoProtocol
+import com.hyphenate.chatroom.service.model.UserInfoProtocol
 
 class SPUtils private constructor(private val context: Application) {
 

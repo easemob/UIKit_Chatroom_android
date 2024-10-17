@@ -1,7 +1,7 @@
-package com.hyphenate.chatroom
+package com.hyphenate.chatroom.service
 
 import android.text.TextUtils
-import com.hyphenate.chatroom.model.UIConstant
+import com.hyphenate.chatroom.service.model.UIConstant
 
 enum class UICustomMsgType(name: String) {
     /**

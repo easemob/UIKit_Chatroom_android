@@ -1,6 +1,7 @@
 package com.hyphenate.chatroom
 
-import com.hyphenate.chatroom.model.UIChatroomInfo
+import com.hyphenate.chatroom.service.ChatroomUIKitClient
+import com.hyphenate.chatroom.service.model.UIChatroomInfo
 import com.hyphenate.chatroom.service.Chatroom
 import com.hyphenate.chatroom.service.ChatroomService
 import com.hyphenate.chatroom.service.GiftService
@@ -19,7 +20,7 @@ class UIChatroomService constructor(
 
     private val giftImpl: GiftService by lazy { GiftServiceImpl() }
 
-    private val userImpl:UserService by lazy { UserServiceImpl() }
+    private val userImpl: UserService by lazy { UserServiceImpl() }
 
 
     fun getGiftService() = giftImpl
@@ -27,7 +28,7 @@ class UIChatroomService constructor(
     fun getUserService() = userImpl
     fun getRoomInfo() = roomInfo
 
-    fun joinRoom(onSuccess: OnValueSuccess<Chatroom>, onFailure: (Int,String?) -> Unit = { _, _ ->}){
+    fun joinRoom(onSuccess: OnValueSuccess<Chatroom>, onFailure: (Int, String?) -> Unit = { _, _ ->}){
         roomInfo.let {
             ChatroomUIKitClient.getInstance().joinChatroom( it,
                 onSuccess = { chatroom ->
