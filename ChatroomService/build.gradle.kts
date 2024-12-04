@@ -32,6 +32,6 @@ android {
 }
 
 dependencies {
-    api("io.hyphenate:hyphenate-chat:4.2.0")
+    api("io.hyphenate:hyphenate-chat:4.11.0")
     implementation("com.google.code.gson:gson:2.9.0")
 }

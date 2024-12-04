@@ -33,6 +33,8 @@
     <string name="menu_item_translate">Translate</string>
     <string name="menu_item_report">Report</string>
     <string name="menu_item_recall">Recall</string>
+    <string name="menu_item_pin">Pin this message</string>
+    <string name="menu_item_unpin">Unpin this message</string>
 
     <string name="dialog_title_remove_user">Want to remove [%1$s] from the chatroom?</string>
 

@@ -1,5 +1,7 @@
 package com.hyphenate.chatroom.service
 
+import com.hyphenate.chat.EMMessagePinInfo
+
 
 /**
  * The interface for handling chatroom messages.
@@ -92,6 +94,45 @@ interface MessageHandleService {
                       reason: String,
                       onSuccess: OnSuccess,
                       onError: OnError)
+
+    /**
+     * pin a message from chat server.
+     * @param message The message to be pined.
+     * @param onSuccess The callback to indicate the message is pined successfully.
+     * @param onError The callback to indicate the message is failed to pin.
+     */
+    fun pinMessage(messageId: String,
+                   onSuccess: OnSuccess,
+                   onError: OnError)
+
+    /**
+     * unpin a message from chat server.
+     * @param message The message to be unpined.
+     * @param onSuccess The callback to indicate the message is unpined successfully.
+     * @param onError The callback to indicate the message is failed to unpin.
+     */
+    fun unpinMessage(messageId: String,
+                   onSuccess: OnSuccess,
+                   onError: OnError)
+    /**
+     * Fetch pin message from chat server.
+     * @param conversationId The conversation id of the chatroom.
+     * @param onSuccess The callback to indicate the message is fetched successfully.
+     * @param onError The callback to indicate the message is failed to fetch.
+     */
+    fun fetchPinMessageFromServer(conversationId: String,
+                        onSuccess: OnValueSuccess<List<ChatMessage>>,
+                        onError: OnError)
+    /**
+     * Fetch pin message from local.
+     * @param conversationId The conversation id of the chatroom.
+     * @param onSuccess The callback to indicate the message is fetched successfully.
+     * @param onError The callback to indicate the message is failed to fetch.
+     */
+    fun getPinMessageFromLocal(conversationId: String,
+                               onSuccess: OnValueSuccess<List<ChatMessage>>,
+                               onError: OnError)
+
 }
 
 interface GiftMessageHandleService {
@@ -116,6 +157,16 @@ interface MessageListener {
      * @param message The broadcast message received.
      */
     fun onBroadcastReceived(message: ChatMessage){}
+
+    /**
+     * The callback to indicate a pin message info has changed.
+     */
+    fun onMessagePinChanged(
+        messageId: String?,
+        conversationId: String?,
+        pinOperation: EMMessagePinInfo.PinOperation?,
+        pinInfo: EMMessagePinInfo?
+    ){}
 
 }
 

@@ -1,19 +1,28 @@
 package com.hyphenate.chatroom.viewmodel.messages
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.hyphenate.chat.EMClient
+import com.hyphenate.chat.EMMessagePinInfo
 import com.hyphenate.chatroom.ChatroomUIKitClient
 import com.hyphenate.chatroom.UIChatroomService
 import com.hyphenate.chatroom.commons.ComposeChatListController
 import com.hyphenate.chatroom.commons.ComposeMessageListState
 import com.hyphenate.chatroom.service.ChatMessage
 import com.hyphenate.chatroom.compose.messagelist.ComposeMessageListItemState
+import com.hyphenate.chatroom.service.ChatLog
 import com.hyphenate.chatroom.service.ChatroomChangeListener
 import com.hyphenate.chatroom.service.GiftEntityProtocol
 import com.hyphenate.chatroom.service.GiftReceiveListener
 import com.hyphenate.chatroom.service.OnError
 import com.hyphenate.chatroom.service.OnSuccess
 import com.hyphenate.chatroom.service.OnValueSuccess
+import com.hyphenate.util.EMLog
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MessageListViewModel(
     private val isDarkTheme: Boolean? = false,
@@ -24,6 +33,16 @@ class MessageListViewModel(
     private val chatService: UIChatroomService,
     private val composeChatListController: ComposeChatListController
     ): ViewModel(), ChatroomChangeListener, GiftReceiveListener {
+
+    private val _pinMessage = MutableLiveData<ChatMessage?>()
+
+    val pinMessage: LiveData<ChatMessage?> = _pinMessage
+
+    fun updatePinMessage(message: ChatMessage?) {
+        viewModelScope.launch(Dispatchers.Main) {
+            _pinMessage.value = message
+        }
+    }
 
     /**
      * Register chatroom change listener
@@ -75,6 +94,20 @@ class MessageListViewModel(
         super.onRecallMessageReceived(message)
         if (message.conversationId() == ChatroomUIKitClient.getInstance().getContext().getCurrentRoomInfo().roomId){
             removeMessage(message = message)
+        }
+    }
+
+    override fun onMessagePinChanged(
+        messageId: String?,
+        conversationId: String?,
+        pinOperation: EMMessagePinInfo.PinOperation?,
+        pinInfo: EMMessagePinInfo?){
+        if (pinOperation == EMMessagePinInfo.PinOperation.PIN) {
+            EMClient.getInstance().chatManager().getMessage(messageId)?.let {
+                updatePinMessage(it)
+            }
+        }else{
+            updatePinMessage(null)
         }
     }
 
@@ -132,9 +165,43 @@ class MessageListViewModel(
 
     fun removeMessage(message: ChatMessage?, onSuccess: OnSuccess, onError: OnError) {
         chatService.getChatService().recallMessage(message, onSuccess = {
-            removeMessage(message = message!!)
             onSuccess.invoke()
         }, onError)
+    }
+
+    fun pinMessage(message: ChatMessage?, onSuccess: OnSuccess, onError: OnError) {
+        chatService.getChatService().pinMessage(message?.msgId?:"", onSuccess = {
+            onSuccess.invoke()
+            updatePinMessage(message)
+        }, onError)
+    }
+
+    fun unpinMessage(message: ChatMessage?, onSuccess: OnSuccess, onError: OnError) {
+        chatService.getChatService().unpinMessage(message?.msgId?:"", onSuccess = {
+            updatePinMessage(null)
+            onSuccess.invoke()
+        }, onError)
+    }
+
+    fun fetchPinMessagesFromServer() {
+        chatService.getChatService().fetchPinMessageFromServer(roomId,onSuccess={
+           //获取第一个元素
+            it.firstOrNull()?.let { message ->
+                ChatLog.i("MessageListViewModel","fetchPinMessagesFromServer $message")
+                updatePinMessage(message)
+            }
+        }, onError={code, error ->
+            ChatLog.i("MessageListViewModel","fetchPinMessagesFromServer onError $code $error")
+            updatePinMessage(null) })
+    }
+
+    fun getPinMessagesFromLocal() {
+        chatService.getChatService().getPinMessageFromLocal(roomId,onSuccess={
+            //获取第一个元素
+            it.firstOrNull()?.let { message ->
+                updatePinMessage(message)
+            }
+        }, onError={code, error -> updatePinMessage(null) })
     }
 
     fun addTextMessage(message:ChatMessage){

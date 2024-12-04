@@ -67,7 +67,16 @@ enum class ChatroomResultEvent {
     /**
      * The event is triggered when the current user deletes a message.
      */
-    RECALL_MESSAGE
+    RECALL_MESSAGE,
+    /**
+     *  The event is triggered when the current user pin a message.
+     */
+    PIN_MESSAGE,
+    /**
+     *  The event is triggered when the current user unpin a message.
+     */
+    UNPIN_MESSAGE,
+
 }
 
 /**
