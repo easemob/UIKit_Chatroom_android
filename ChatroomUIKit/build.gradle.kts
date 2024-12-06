@@ -66,7 +66,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
     implementation ("androidx.compose.runtime:runtime-livedata:1.5.1")
     implementation("io.coil-kt:coil-compose:2.4.0")
-    api(project(mapOf("path" to ":ChatroomService")))
+    implementation ("io.hyphenate:hyphenate-chat:4.11.0")
 }
 
 
