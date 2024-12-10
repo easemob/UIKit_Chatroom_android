@@ -3,6 +3,7 @@ package com.hyphenate.chatroom.compose
 import android.app.Activity
 import android.content.Context
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -335,6 +336,7 @@ fun ShowComposeMenuDrawer(
     messageListViewModel: MessageListViewModel,
     onMessageMenuClick: ((Int, UIComposeSheetItem) -> Unit)? = null
 ){
+    val context = LocalContext.current
     ComposeMenuBottomSheet(
         viewModel = menuViewModel,
         onListItemClick = { index, menu ->
@@ -387,6 +389,23 @@ fun ShowComposeMenuDrawer(
                         }
                         R.id.action_menu_report -> {
                             reportViewModel.openDrawer()
+                            menuViewModel.closeDrawer()
+                        }
+                        R.id.action_menu_pin->{
+                            (menuViewModel.getSelectedBean() as ChatMessage).let {
+                                    message ->
+                                messageListViewModel.pinMessage(message, onSuccess = {}, onError = {code, error ->})
+                            }
+                            menuViewModel.closeDrawer()
+
+                        }
+                        R.id.action_menu_unpin->{
+                            (menuViewModel.getSelectedBean() as ChatMessage).let {
+                                    message ->
+                                messageListViewModel.unpinMessage(message, onSuccess = {}, onError = {code, error ->
+                                    Toast.makeText(context, error, Toast.LENGTH_SHORT).show();
+                                })
+                            }
                             menuViewModel.closeDrawer()
                         }
                     }

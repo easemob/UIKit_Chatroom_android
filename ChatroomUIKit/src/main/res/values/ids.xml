@@ -6,4 +6,6 @@
     <item name="action_menu_unmute" type="id"/>
     <item name="action_menu_report" type="id"/>
     <item name="action_menu_remove" type="id"/>
+    <item name="action_menu_pin" type="id"/>
+    <item name="action_menu_unpin" type="id"/>
 </resources>

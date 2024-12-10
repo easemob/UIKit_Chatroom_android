@@ -69,12 +69,14 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
-    // UI
-    implementation(project(mapOf("path" to ":ChatroomUIKit")))
-
     // Http Libraries
     implementation("com.squareup.okhttp3:okhttp:3.12.0")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
+
+    implementation ("io.hyphenate:hyphenate-chat:4.11.0")
+
+    implementation(project(mapOf("path" to ":ChatroomUIKit")))
+//    implementation ("io.hyphenate:ease-chatroomui-kit:1.1.0")
 }

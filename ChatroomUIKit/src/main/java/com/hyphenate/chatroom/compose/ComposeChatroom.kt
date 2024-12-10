@@ -107,6 +107,7 @@ fun ComposeChatroom(
                         roomId, ChatroomUIKitClient.getInstance().getCurrentUser().userId
                     )
                 )
+                messageListViewModel.fetchPinMessagesFromServer()
             }
         )
     } else {

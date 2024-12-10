@@ -3,7 +3,7 @@ package com.hyphenate.chatroom
 import android.content.Context
 import android.text.TextUtils
 import android.util.Log
-import com.hyphenate.chat.EMMessage
+import com.hyphenate.chat.EMMessagePinInfo
 import com.hyphenate.chatroom.model.UIChatroomInfo
 import com.hyphenate.chatroom.model.UIConstant
 import com.hyphenate.chatroom.model.UserInfoProtocol
@@ -573,7 +573,7 @@ class ChatroomUIKitClient {
             }
         }
 
-        override fun onMessageRecalled(messages: MutableList<EMMessage>?) {
+        override fun onMessageRecalled(messages: MutableList<ChatMessage>?) {
             messages?.forEach {
                 try {
                     for (listener in eventListeners.iterator()) {
@@ -582,6 +582,21 @@ class ChatroomUIKitClient {
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
+            }
+        }
+
+        override fun onMessagePinChanged(
+            messageId: String?,
+            conversationId: String?,
+            pinOperation: EMMessagePinInfo.PinOperation?,
+            pinInfo: EMMessagePinInfo?
+        ) {
+            try {
+                for (listener in eventListeners.iterator()) {
+                    listener.onMessagePinChanged(messageId,conversationId,pinOperation,pinInfo)
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
         }
 

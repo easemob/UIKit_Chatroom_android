@@ -51,6 +51,14 @@ class MessageMenuViewModel(
         if (contentList.isEmpty() && bean is ChatMessage) {
             val context = ChatroomUIKitClient.getInstance().getContext().context ?: return
             val messageMenuList = mutableListOf<UIComposeSheetItem>()
+            //pin
+            val isPined: Boolean = bean.pinnedInfo() != null && bean.pinnedInfo().operatorId().isNotEmpty()
+            if (isPined){
+                messageMenuList.add(UIComposeSheetItem(id = R.id.action_menu_unpin, title =  context.getString(R.string.menu_item_unpin)))
+            }else{
+                messageMenuList.add(UIComposeSheetItem(id = R.id.action_menu_pin, title =  context.getString(R.string.menu_item_pin)))
+            }
+
             if (ChatroomUIKitClient.getInstance().getCacheManager().inMuteCache(bean.conversationId(), bean.from)) {
                 messageMenuList.add(UIComposeSheetItem(id = R.id.action_menu_translate, title =  context.getString(R.string.menu_item_translate)))
                 if(bean.from == ChatroomUIKitClient.getInstance().getCurrentUser().userId){
