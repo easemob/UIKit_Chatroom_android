@@ -1,6 +1,6 @@
 group = "io.hyphenate"
 archivesBaseName = "ease-chatroomui-kit"
-version = "1.0.0"//发布aar的库版本
+version = "1.1.0"//发布aar的库版本
 
 apply {
     plugin 'maven-publish'
@@ -12,7 +12,7 @@ def localProperties = new Properties()
 localProperties.load(project.rootProject.file('local.properties').newDataInputStream())
 
 Properties properties = new Properties()
-properties.load(file(localProperties.getProperty('maven.dir')+"./project.properties").newDataInputStream())
+properties.load(file(localProperties.getProperty('maven.dir')+"/project.properties").newDataInputStream())
 
 def ossrhUsername = properties.getProperty('ossrhUsername')
 def ossrhPassword = properties.getProperty('ossrhPassword')
@@ -21,7 +21,7 @@ def ossrhPassword = properties.getProperty('ossrhPassword')
 gradle.taskGraph.whenReady { taskGraph ->
     if (taskGraph.allTasks.any { it instanceof Sign }) {
         def id = properties.getProperty("signing.keyId")
-        def file = localProperties.getProperty('maven.dir')+properties.getProperty("signing.secretKeyRingFile")
+        def file = localProperties.getProperty('maven.dir')+properties.getProperty("signing.secretKeyRingFile").substring(1)
         def password = properties.getProperty("signing.password")
 
         allprojects { ext."signing.keyId" = id }
@@ -67,13 +67,7 @@ task sourcesJar(type: Jar) {
     archiveClassifier = 'sources'
 }
 
-artifacts {
-    archives javadocJar, sourcesJar
-}
 
-signing {
-    sign publishing.publications
-}
 
 afterEvaluate {
     publishing {
@@ -86,6 +80,9 @@ afterEvaluate {
                 afterEvaluate {
                     from components.release
                 }
+                // 设置要发布的文件
+                artifact sourcesJar
+                artifact javadocJar
 
                 signing.sign publishing.publications.release
 
@@ -125,14 +122,6 @@ publishing {
         maven {
             name = "ossrh"
             url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
-            credentials {
-                username = ossrhUsername
-                password = ossrhPassword
-            }
-        }
-        maven {
-            name = "ossrh-snapshot"
-            url = uri("https://oss.sonatype.org/content/repositories/snapshots/")
             credentials {
                 username = ossrhUsername
                 password = ossrhPassword
