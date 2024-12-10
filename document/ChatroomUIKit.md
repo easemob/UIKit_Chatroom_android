@@ -67,10 +67,11 @@ dependencies {
 
 ## [Remote module dependencies](../document/ChatroomUIKit.md#remote-module-dependencies)
 
-Add the following code line to build.gradle:
+Add the following code line to build.gradle:（[Click here for the latest version](https://central.sonatype.com/artifact/io.hyphenate/ease-chatroomui-kit/versions)）
 
 ```
-implementation 'ChatroomUIKit'
+//Take version 1.1.0 as an example
+implementation ("io.hyphenate:ease-chatroomui-kit:1.1.0")
 ```
 
 # [Structure](../document/ChatroomUIKit.md#structure)
@@ -84,20 +85,21 @@ implementation 'ChatroomUIKit'
 │  ├─ compose                            // Sample demo.
 │  ├─ http                               // Encapsulated network requests for interaction with app services.
 │  └─ SplashActivity                     // Program launch page.
-├─ ChatroomService                       // ChatroomUIKit protocol module.
-│  ├─ model                              // The entity objects used by ChatroomUIKit (user, room information, and configuration information).
-│  ├─ service                            // The protocols and protocol implementations used by ChatroomUIKit (room protocol, user protocol, and gift protocol).
-│  │    └─ Protocol                        
-│  │         ├─ GiftService              // Gift sending and receiving channel.
-│  │         ├─ UserService              // Component for user login and user attribute update.
-│  │         └─ ChatroomService          // Component for implementing the protocol for chat room management, including joining and leaving the chat room and sending and receiving messages.
-│  └─ ChatroomUIKitClient                // ChatroomUIKit initialization class.
 └─ ChatroomUIKit            
        ├─ compose                        // UI Compose (Bottom toolbar, message list, gift list, and bottom drawer).
        ├─ theme                          // Resource files providing properties such as colors, fonts, themes, gradients, and sizes required for the project.  
        ├─ viewModel                      // Data processing.
        ├─ widget                         // Input widget.
-       └─ ui                             // Search Activity. 
+       ├─ ui                             // Search Activity. 
+       └─ service                        // ChatroomUIKit protocol module.
+          ├─ model                       // The entity objects used by ChatroomUIKit (user, room information, and configuration information).
+          ├─ service                     // The protocols and protocol implementations used by ChatroomUIKit (room protocol, user protocol, and gift protocol).
+          │    ├─ ChatroomService                //ChatroomUIKit protocol module.       
+          │    └─ Protocol                        
+          │         ├─ GiftService              // Gift sending and receiving channel.
+          │         ├─ UserService              // Component for user login and user attribute update.
+          │         └─ ChatroomService          // Component for implementing the protocol for chat room management, including joining and leaving the chat room and sending and receiving messages.
+          └─ ChatroomUIKitClient                // ChatroomUIKit initialization class.
 ```
 # [Quick start](../document/ChatroomUIKit.md#quick-start)
 
