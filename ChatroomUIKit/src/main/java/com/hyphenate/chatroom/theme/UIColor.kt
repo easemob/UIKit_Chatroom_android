@@ -245,6 +245,7 @@ data class UIColors(
     val primaryL80D80:Color,
     val secondaryL80D70:Color,
     val neutralL95D00:Color,
+    val alphaBlack40:Color,
 
 ) {
     companion object {
@@ -284,6 +285,7 @@ data class UIColors(
             neutralL30D50 = neutralColor30,
             neutralL98D30 = neutralColor98,
             neutralL30D98 = neutralColor30,
+            alphaBlack40 = barrageDarkColor40,
         )
 
         @Composable
@@ -322,6 +324,7 @@ data class UIColors(
             neutralL30D50 = neutralColor50,
             neutralL98D30 = neutralColor30,
             neutralL30D98 = neutralColor98,
+            alphaBlack40 = barrageDarkColor40,
         )
     }
 }

@@ -66,7 +66,8 @@ fun ComposeGlobalBroadcast(
                     ChatroomUIKitTheme.shapes.medium
                 )
                 .wrapContentWidth()
-                .height(20.dp),
+                .height(20.dp)
+                .align(Alignment.TopCenter),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Image(

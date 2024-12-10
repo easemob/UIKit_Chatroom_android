@@ -33,6 +33,8 @@
     <string name="menu_item_translate">翻译</string>
     <string name="menu_item_report">举报</string>
     <string name="menu_item_recall">撤回</string>
+    <string name="menu_item_pin">置顶</string>
+    <string name="menu_item_unpin">取消置顶</string>
 
     <string name="dialog_title_remove_user">确定要移除成员[%1$s]?</string>
 

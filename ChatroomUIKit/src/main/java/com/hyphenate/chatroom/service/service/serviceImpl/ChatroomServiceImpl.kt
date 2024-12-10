@@ -1,5 +1,6 @@
 package com.hyphenate.chatroom.service.serviceImpl
 
+import com.hyphenate.chat.EMClient
 import com.hyphenate.chatroom.ChatroomResultEvent
 import com.hyphenate.chatroom.ChatroomUIKitClient
 import com.hyphenate.chatroom.model.UIConstant
@@ -282,5 +283,46 @@ class ChatroomServiceImpl: ChatroomService {
         }
         chatManager.asyncReportMessage(messageId, tag, reason,
             CallbackImpl(onSuccess, onError, event = ChatroomResultEvent.REPORT))
+    }
+
+    override fun pinMessage(messageId: String, onSuccess: OnSuccess, onError: OnError) {
+        if (messageId.isEmpty()) {
+            onError(ChatError.INVALID_PARAM, "")
+            return
+        }
+        chatManager.asyncPinMessage(messageId, CallbackImpl(onSuccess, onError, event = ChatroomResultEvent.PIN_MESSAGE))
+
+    }
+
+    override fun unpinMessage(messageId: String, onSuccess: OnSuccess, onError: OnError) {
+        if (messageId.isEmpty()) {
+            onError(ChatError.INVALID_PARAM, "")
+            return
+        }
+        chatManager.asyncUnPinMessage(messageId, CallbackImpl(onSuccess, onError, event = ChatroomResultEvent.UNPIN_MESSAGE))
+
+    }
+
+    override fun fetchPinMessageFromServer(conversationId: String,
+                                  onSuccess: OnValueSuccess<List<ChatMessage>>,
+                                  onError: OnError){
+        if (conversationId.isEmpty()) {
+            onError(ChatError.INVALID_PARAM, "")
+            return
+        }
+        EMClient.getInstance().chatManager().asyncGetPinnedMessagesFromServer(conversationId,ValueCallbackImpl<List<ChatMessage>>(onSuccess, onError))
+    }
+
+    override fun getPinMessageFromLocal(conversationId: String,
+                               onSuccess: OnValueSuccess<List<ChatMessage>>,
+                               onError: OnError){
+        if (conversationId.isEmpty()) {
+            onError(ChatError.INVALID_PARAM, "")
+            return
+        }
+        EMClient.getInstance().chatManager().getConversation(conversationId)?.pinnedMessages()?.let {
+            ValueCallbackImpl<List<ChatMessage>>(onSuccess, onError).onSuccess(it)
+        }?: onError(ChatError.CHATROOM_INVALID_ID, "")
+
     }
 }

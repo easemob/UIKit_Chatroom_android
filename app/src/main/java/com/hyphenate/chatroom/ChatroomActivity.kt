@@ -53,6 +53,7 @@ import com.hyphenate.chatroom.compose.avatar.Avatar
 import com.hyphenate.chatroom.compose.defaultMembersViewModelFactory
 import com.hyphenate.chatroom.compose.dialog.SimpleDialog
 import com.hyphenate.chatroom.compose.broadcast.ComposeGlobalBroadcast
+import com.hyphenate.chatroom.compose.messagelist.ComposePinMessage
 import com.hyphenate.chatroom.compose.utils.WindowConfigUtils
 import com.hyphenate.chatroom.model.UIChatroomInfo
 import com.hyphenate.chatroom.service.ChatError
@@ -70,6 +71,7 @@ import com.hyphenate.chatroom.viewmodel.broadcast.GlobalBroadcastViewModel
 import com.hyphenate.chatroom.viewmodel.broadcast.GlobalBroadcastViewModelFactory
 import com.hyphenate.chatroom.viewmodel.member.MembersBottomSheetViewModel
 import com.hyphenate.chatroom.viewmodel.menu.RoomMemberMenuViewModel
+import com.hyphenate.chatroom.viewmodel.messages.MessageListViewModel
 import com.hyphenate.chatroom.viewmodel.messages.MessagesViewModelFactory
 
 class ChatroomActivity : ComponentActivity(), ChatroomResultListener, ChatroomChangeListener {
@@ -88,6 +90,12 @@ class ChatroomActivity : ComponentActivity(), ChatroomResultListener, ChatroomCh
         ViewModelProvider(this@ChatroomActivity as ComponentActivity,
             factory = MessagesViewModelFactory(context = this@ChatroomActivity, roomId = room.id,
                 service = service))[ComposeGiftListViewModel::class.java]
+    }
+
+    private val messageViewModel by lazy {
+        ViewModelProvider(this@ChatroomActivity as ComponentActivity,
+            factory = MessagesViewModelFactory(context = this@ChatroomActivity, roomId = room.id,
+                service = service))[MessageListViewModel::class.java]
     }
 
     private val memberViewModel by lazy {
@@ -273,14 +281,25 @@ class ChatroomActivity : ComponentActivity(), ChatroomResultListener, ChatroomCh
                                     )
                                 }
                             )
+                            Column(modifier = Modifier
+                                .fillMaxWidth()
+                                .wrapContentHeight()
+                                .padding(start = 12.dp, end = 54.dp)
+                            ) {
 
-                            ComposeGlobalBroadcast(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(start = 12.dp, end = 12.dp)
-                                ,
-                                viewModel = globalBroadcastModel
-                            )
+                                ComposePinMessage(
+                                modifier = Modifier,
+                                viewModel=messageViewModel
+                                )
+
+                                ComposeGlobalBroadcast(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(start = 12.dp, end = 12.dp)
+                                    ,
+                                    viewModel = globalBroadcastModel
+                                )
+                            }
                         }
                     }
 
