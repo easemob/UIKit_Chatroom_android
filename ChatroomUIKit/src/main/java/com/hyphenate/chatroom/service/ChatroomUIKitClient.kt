@@ -3,7 +3,6 @@ package com.hyphenate.chatroom
 import android.content.Context
 import android.text.TextUtils
 import android.util.Log
-import com.hyphenate.chat.EMMessagePinInfo
 import com.hyphenate.chatroom.model.UIChatroomInfo
 import com.hyphenate.chatroom.model.UIConstant
 import com.hyphenate.chatroom.model.UserInfoProtocol
@@ -26,9 +25,11 @@ import com.hyphenate.chatroom.service.ChatroomChangeListener
 import com.hyphenate.chatroom.service.ChatroomService
 import com.hyphenate.chatroom.service.GiftEntityProtocol
 import com.hyphenate.chatroom.service.GiftReceiveListener
+import com.hyphenate.chatroom.service.MessagePinInfo
 import com.hyphenate.chatroom.service.OnError
 import com.hyphenate.chatroom.service.OnSuccess
 import com.hyphenate.chatroom.service.OnValueSuccess
+import com.hyphenate.chatroom.service.PinOperation
 import com.hyphenate.chatroom.service.UserEntity
 import com.hyphenate.chatroom.service.UserService
 import com.hyphenate.chatroom.service.UserStateChangeListener
@@ -588,8 +589,8 @@ class ChatroomUIKitClient {
         override fun onMessagePinChanged(
             messageId: String?,
             conversationId: String?,
-            pinOperation: EMMessagePinInfo.PinOperation?,
-            pinInfo: EMMessagePinInfo?
+            pinOperation: PinOperation?,
+            pinInfo: MessagePinInfo?
         ) {
             try {
                 for (listener in eventListeners.iterator()) {

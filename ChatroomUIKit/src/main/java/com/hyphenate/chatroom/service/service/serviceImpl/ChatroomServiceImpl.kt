@@ -1,6 +1,5 @@
 package com.hyphenate.chatroom.service.serviceImpl
 
-import com.hyphenate.chat.EMClient
 import com.hyphenate.chatroom.ChatroomResultEvent
 import com.hyphenate.chatroom.ChatroomUIKitClient
 import com.hyphenate.chatroom.model.UIConstant
@@ -310,7 +309,7 @@ class ChatroomServiceImpl: ChatroomService {
             onError(ChatError.INVALID_PARAM, "")
             return
         }
-        EMClient.getInstance().chatManager().asyncGetPinnedMessagesFromServer(conversationId,ValueCallbackImpl<List<ChatMessage>>(onSuccess, onError))
+        ChatClient.getInstance().chatManager().asyncGetPinnedMessagesFromServer(conversationId,ValueCallbackImpl<List<ChatMessage>>(onSuccess, onError))
     }
 
     override fun getPinMessageFromLocal(conversationId: String,
@@ -320,7 +319,7 @@ class ChatroomServiceImpl: ChatroomService {
             onError(ChatError.INVALID_PARAM, "")
             return
         }
-        EMClient.getInstance().chatManager().getConversation(conversationId)?.pinnedMessages()?.let {
+        ChatClient.getInstance().chatManager().getConversation(conversationId)?.pinnedMessages()?.let {
             ValueCallbackImpl<List<ChatMessage>>(onSuccess, onError).onSuccess(it)
         }?: onError(ChatError.CHATROOM_INVALID_ID, "")
 

@@ -1,6 +1,5 @@
 package com.hyphenate.chatroom.service
 
-import com.hyphenate.chat.EMMessagePinInfo
 
 
 /**
@@ -164,8 +163,8 @@ interface MessageListener {
     fun onMessagePinChanged(
         messageId: String?,
         conversationId: String?,
-        pinOperation: EMMessagePinInfo.PinOperation?,
-        pinInfo: EMMessagePinInfo?
+        pinOperation: PinOperation?,
+        pinInfo: MessagePinInfo?
     ){}
 
 }

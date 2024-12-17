@@ -25,6 +25,10 @@ typealias ChatType = com.hyphenate.chat.EMMessage.ChatType
 typealias ChatMessageType = com.hyphenate.chat.EMMessage.Type
 typealias ChatTextMessageBody = com.hyphenate.chat.EMTextMessageBody
 typealias ChatCustomMessageBody = com.hyphenate.chat.EMCustomMessageBody
+typealias MessagePinInfo = com.hyphenate.chat.EMMessagePinInfo
+typealias PinOperation = com.hyphenate.chat.EMMessagePinInfo.PinOperation
+typealias TextMessageBody = com.hyphenate.chat.EMTextMessageBody
+
 
 // Listeners
 typealias ChatConnectionListener = com.hyphenate.EMConnectionListener
