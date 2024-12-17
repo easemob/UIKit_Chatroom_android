@@ -5,22 +5,22 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hyphenate.chat.EMClient
-import com.hyphenate.chat.EMMessagePinInfo
 import com.hyphenate.chatroom.ChatroomUIKitClient
 import com.hyphenate.chatroom.UIChatroomService
 import com.hyphenate.chatroom.commons.ComposeChatListController
 import com.hyphenate.chatroom.commons.ComposeMessageListState
 import com.hyphenate.chatroom.service.ChatMessage
 import com.hyphenate.chatroom.compose.messagelist.ComposeMessageListItemState
+import com.hyphenate.chatroom.service.ChatClient
 import com.hyphenate.chatroom.service.ChatLog
 import com.hyphenate.chatroom.service.ChatroomChangeListener
 import com.hyphenate.chatroom.service.GiftEntityProtocol
 import com.hyphenate.chatroom.service.GiftReceiveListener
+import com.hyphenate.chatroom.service.MessagePinInfo
 import com.hyphenate.chatroom.service.OnError
 import com.hyphenate.chatroom.service.OnSuccess
 import com.hyphenate.chatroom.service.OnValueSuccess
-import com.hyphenate.util.EMLog
+import com.hyphenate.chatroom.service.PinOperation
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -100,10 +100,10 @@ class MessageListViewModel(
     override fun onMessagePinChanged(
         messageId: String?,
         conversationId: String?,
-        pinOperation: EMMessagePinInfo.PinOperation?,
-        pinInfo: EMMessagePinInfo?){
-        if (pinOperation == EMMessagePinInfo.PinOperation.PIN) {
-            EMClient.getInstance().chatManager().getMessage(messageId)?.let {
+        pinOperation: PinOperation?,
+        pinInfo: MessagePinInfo?){
+        if (pinOperation == PinOperation.PIN) {
+            ChatClient.getInstance().chatManager().getMessage(messageId)?.let {
                 updatePinMessage(it)
             }
         }else{

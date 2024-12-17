@@ -53,11 +53,11 @@ import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.hyphenate.chat.EMTextMessageBody
 import com.hyphenate.chatroom.ChatroomUIKitClient
 import com.hyphenate.chatroom.compose.utils.toDp
 import com.hyphenate.chatroom.service.ChatLog
 import com.hyphenate.chatroom.service.ChatMessage
+import com.hyphenate.chatroom.service.TextMessageBody
 import com.hyphenate.chatroom.service.UserEntity
 import com.hyphenate.chatroom.theme.ChatroomUIKitTheme
 import com.hyphenate.chatroom.uikit.R
@@ -80,8 +80,8 @@ fun MultiColorTextWithIcon(modifier: Modifier, pinMessage: ChatMessage) {
     val textMeasurer = rememberTextMeasurer()
 
     var content = ""
-    if (pinMessage.body is EMTextMessageBody) {
-         content = (pinMessage.body as EMTextMessageBody).message
+    if (pinMessage.body is TextMessageBody) {
+         content = (pinMessage.body as TextMessageBody).message
     }
 
     var textWidth = 280.dp
